@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:43:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/14 13:40:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:43:04 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	std::cout << std::endl;
-	return (0);
+	return (EXIT_SUCCESS);
 }
