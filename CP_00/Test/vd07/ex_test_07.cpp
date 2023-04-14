@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:04:26 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/12 20:59:40 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:53:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 	first_instance.*p = 21;
 	std::cout << "Valeur test first : " << first_instance.var_int << std::endl;
 	new_instance->*p = 84;
-	std::cout << "Valeur test first : " << first_instance.var_int << std::endl;
+	std::cout << "Valeur test first : " << new_instance->var_int << std::endl;
 	std::cout << "Valeur test first : " << second_instance.var_int << std::endl;
 	// std::cout << "Valeur test : " << *(Sample::*p) << std::endl;
 	(first_instance.*f)(&first_instance.var_int);
