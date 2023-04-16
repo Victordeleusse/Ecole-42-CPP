@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:51 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/14 18:50:08 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:33:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Contact {
 		Contact(void);
 		~Contact(void);
 
-		void	ft_init_contact(void);
-		int		ft_get_id(void);		
+		int		ft_get_id(void);
+		void	ft_set_id(int number);
 
 	private :
 	
@@ -35,7 +35,8 @@ class Contact {
 		std::string			phone_number;
 		std::string			darkest_secret;
 		
+		void	ft_init_contact(void); //Je ne veux pas qu on puisse initialiser un contact en dehors de ma classe.
+			
 }
-
 
 #endif
