@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/16 18:38:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:44:56 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	Contact::ft_set_id(int number)
 
 void	Contact::ft_init_contact(void) 
 {	
-	this->first_name = ft_init_strdata("first name");
-	this->last_name = ft_init_strdata("last name");
-	this->nickname = ft_init_strdata("nickname");
+	this->first_name = ft_init_strdata("first name (lowercase letters only)");
+	this->last_name = ft_init_strdata("last name (lowercase letters only)");
+	this->nickname = ft_init_strdata("nickname (lowercase letters only)");
 	this->phone_number = ft_init_digitdata("phone number");
-	this->darkest_secret = ft_init_strdata("darkest secret");
+	this->darkest_secret = ft_init_strdata("darkest secret (lowercase letters only)");
 	return ;
 }
 
@@ -77,3 +77,26 @@ std::string	Contact::ft_init_digitdata(const std::string name)
 	return (buffer);
 }
 
+static int	is_a_valide_name(std::string name)
+{
+	std::string::iterator it = name.begin();
+	while (it != name.end())
+	{
+		if ('a' > *it || 'z' < *it)
+			return (0);
+		it++;
+	}
+	return (1);
+}
+
+static int	is_a_valide_number(std::string name)
+{
+	std::string::iterator it = name.begin();
+	while (it != name.end())
+	{
+		if ('0' > *it || '9' < *it)
+			return (0);
+		it++;
+	}
+	return (1);
+}
