@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/16 18:44:56 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:58:09 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,40 @@ void	Contact::ft_set_id(int number)
 
 void	Contact::ft_init_contact(void) 
 {	
-	this->first_name = ft_init_strdata("first name (lowercase letters only)");
-	this->last_name = ft_init_strdata("last name (lowercase letters only)");
+	this->first_name = (const std::string)ft_init_strdata("first name (lowercase letters only)");
+	this->last_name = (const std::string)ft_init_strdata("last name (lowercase letters only)");
 	this->nickname = ft_init_strdata("nickname (lowercase letters only)");
 	this->phone_number = ft_init_digitdata("phone number");
 	this->darkest_secret = ft_init_strdata("darkest secret (lowercase letters only)");
 	return ;
+}
+
+static int	is_a_valid_name(std::string name)
+{
+	if (name.empty())
+		return (0);
+	std::string::iterator it = name.begin();
+	while (it != name.end())
+	{
+		if ('a' > *it || 'z' < *it)
+			return (0);
+		it++;
+	}
+	return (1);
+}
+
+static int	is_a_valid_number(std::string name)
+{
+	if (name.empty())
+		return (0);
+	std::string::iterator it = name.begin();
+	while (it != name.end())
+	{
+		if ('0' > *it || '9' < *it)
+			return (0);
+		it++;
+	}
+	return (1);
 }
 
 std::string	Contact::ft_init_strdata(const std::string name)
@@ -77,26 +105,15 @@ std::string	Contact::ft_init_digitdata(const std::string name)
 	return (buffer);
 }
 
-static int	is_a_valide_name(std::string name)
+static std::string	ft_printLen(std::string str)
 {
-	std::string::iterator it = name.begin();
-	while (it != name.end())
-	{
-		if ('a' > *it || 'z' < *it)
-			return (0);
-		it++;
-	}
-	return (1);
+	if (str.length() > 10)
+		return (str.substr(0, 3) + ".");
+	return (str);
 }
 
-static int	is_a_valide_number(std::string name)
+void	Contact::ft_view_contact(int id)
 {
-	std::string::iterator it = name.begin();
-	while (it != name.end())
-	{
-		if ('0' > *it || '9' < *it)
-			return (0);
-		it++;
-	}
-	return (1);
+	std::cout << "|" << std::setw(10) << id << std::flush;
+	std::cout << "|" << std::setw(10) << ft_printLen(this->_first_name) << std::flush;
 }
