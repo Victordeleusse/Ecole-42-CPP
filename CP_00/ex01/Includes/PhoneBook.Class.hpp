@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:02:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/17 12:18:17 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:33:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_CLASS_H
 
 # include <iostream>
+# include <istream>
 # include <string>
 # include "Contact.Class.hpp"
 
@@ -26,8 +27,7 @@ class PhoneBook {
 		
 		int		ft_get_nbcontacts(void);
 		void	ft_add_contact(void);
-		void	ft_print_contacts(void);
-		void	ft_search_contact(void); // On bloque la possibilite de modifie l output si l utilisation se fait avec un CAST
+		void	ft_search_contact(void);
 	
 	private :
 	
@@ -35,6 +35,8 @@ class PhoneBook {
 		Contact	contacts[8];
 		
 		void	ft_set_nbcontacts(void);
+		Contact	ft_get_contact(int idx);
+		void	ft_display_contact(void);
 };
 
 #endif

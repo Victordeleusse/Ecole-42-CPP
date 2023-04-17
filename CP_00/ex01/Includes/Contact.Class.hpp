@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:51 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/17 12:49:31 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:54:51 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ class Contact {
 
 		int		ft_get_id(void);
 		void	ft_set_id(int number);
-		void	ft_view_contact(int id);
-		void	ft_display_contact(int id);
+		void	ft_init_contact(int number);
+		void	ft_view_contact(void);
+		void	ft_display_full_contact(void);
 
 	private :
 	
-		int					id_contact;
-		const std::string	first_name;
-		const std::string	last_name;
-		std::string			nickname;
-		std::string			phone_number;
-		std::string			darkest_secret;
+		int			id_contact;
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+		std::string	phone_number;
+		std::string	darkest_secret;
 		
-		void		ft_init_contact(void); //Je ne veux pas qu on puisse initialiser un contact en dehors de ma classe.
 		std::string	ft_init_strdata(const std::string name);
 		std::string	ft_init_digitdata(const std::string name);
 		
