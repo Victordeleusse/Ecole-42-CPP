@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:02:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/17 17:33:27 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:42:07 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class PhoneBook {
 		Contact	contacts[8];
 		
 		void	ft_set_nbcontacts(void);
-		Contact	ft_get_contact(int idx);
+		Contact	*ft_get_contact(int idx);
 		void	ft_display_contact(void);
 };
 

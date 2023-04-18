@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:06:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 17:29:31 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:43:06 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	PhoneBook::ft_set_nbcontacts(void)
 	return ;
 }
 
-Contact	PhoneBook::ft_get_contact(int idx)
+Contact	*PhoneBook::ft_get_contact(int idx)
 {
-	return(this->contacts[idx - 1]);
+	return(&this->contacts[idx - 1]);
 }
 
 void	PhoneBook::ft_add_contact(void)
@@ -81,9 +81,9 @@ void	PhoneBook::ft_display_contact(void)
 		if (ft_is_valid_index(searched_id, this))
 			break;
 		else
-			std::cout << "Please enter a valid index : " << std::endl;
+			std::cout << "Please enter a valid index !" << std::endl;
 	}
-	this->ft_get_contact(searched_id).ft_display_full_contact();
+	(*(this->ft_get_contact(searched_id))).ft_display_full_contact();
 	return ;
 }
 

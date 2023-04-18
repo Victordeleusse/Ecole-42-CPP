@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 17:53:32 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:54:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 Contact::Contact(void) 
 {	
-	std::cout << "Appel au constructeur !" << std::endl;
 	return;
 }
 
 Contact::~Contact(void) 
 {	
-	std::cout << "Appel au destructeur !" << std::endl;
 	return;
 }
 
@@ -109,6 +107,7 @@ std::string	Contact::ft_init_strsecret(const std::string name)
 			std::cout << "Sorry, can't be empty !" << std::flush << std::endl;
 		else 
 			break;
+	}
 	return (buffer);
 }
 

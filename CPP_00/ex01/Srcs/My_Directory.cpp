@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:13:48 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 16:34:29 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:50:16 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_display_rules(void)
 
 static void	ft_get_order(std::string *input)
 {
-	std::cout << " -> ";
+	std::cout << "\nINSTRUCTION -> ";
 	std::cin >> *input;
 	std::cout << std::endl;
 	return ;
