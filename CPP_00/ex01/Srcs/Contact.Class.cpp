@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 18:54:12 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:07:24 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Contact::ft_init_contact(int number)
 	this->last_name = ft_init_strdata("last name (lowercase letters only)");
 	this->nickname = ft_init_strdata("nickname (lowercase letters only)");
 	this->phone_number = ft_init_digitdata("phone number (no space)");
-	this->darkest_secret = ft_init_strsecret("darkest secret (lowercase letters only)");
+	this->darkest_secret = ft_init_strsecret("darkest secret");
 	this->ft_set_id(number);
 	return ;
 }

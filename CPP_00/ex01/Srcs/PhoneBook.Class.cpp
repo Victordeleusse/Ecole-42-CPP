@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:06:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 18:43:06 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:10:33 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PhoneBook::PhoneBook (void)
 
 PhoneBook::~PhoneBook (void)
 {
-	std::cout << "Bye bye !" << std::endl;
+	std::cout << "\t\tBye Bye !\n" << std::endl;
 	return ;
 }
 

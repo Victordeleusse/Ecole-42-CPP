@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:13:48 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 18:50:16 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:06:26 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_get_order(std::string *input)
 
 static void	ft_display_error_input_msg(void)
 {
-	std::cout << "\n\nPlease enter a valid input :" << std::endl;
+	std::cout << "Please enter a valid input :" << std::endl;
 	std::cout << "	- ADD" << std::endl;
 	std::cout << "	- SEARCH" << std::endl;
 	std::cout << "	- EXIT" << std::endl;
