@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:51 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/17 18:54:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:18:05 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class Contact {
 		std::string	darkest_secret;
 		
 		std::string	ft_init_strdata(const std::string name);
+		std::string	ft_init_strsecret(const std::string name);
 		std::string	ft_init_digitdata(const std::string name);
 		
 };
