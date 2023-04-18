@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:06:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/17 18:55:12 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:00:52 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	PhoneBook::ft_set_nbcontacts(void)
 
 Contact	PhoneBook::ft_get_contact(int idx)
 {
-	return(this->contacts[idx]);
+	return(this->contacts[idx - 1]);
 }
 
 void	PhoneBook::ft_add_contact(void)
@@ -48,11 +48,8 @@ void	PhoneBook::ft_add_contact(void)
 	static int	count = 1;
 	int			nb_contacts = this->ft_get_nbcontacts();
 
-	if (nb_contacts < 8)
-	{	
-		nb_contacts++;
-		this->contacts[nb_contacts].ft_init_contact(nb_contacts);
-	}
+	if (nb_contacts < 7)
+		this->contacts[nb_contacts].ft_init_contact(nb_contacts - 1);
 	else
 	{
 		if (count > 8)
@@ -76,7 +73,7 @@ static int	ft_is_valid_index(int idx, PhoneBook *directory)
 void	PhoneBook::ft_display_contact(void)
 {
 	int		searched_id = 0;
-	Contact	searched_one;
+	// Contact	searched_one;
 
 	while(1)
 	{
@@ -88,8 +85,7 @@ void	PhoneBook::ft_display_contact(void)
 		else
 			std::cout << "Please enter a valid index : " << std::endl;
 	}
-	searched_one = this->ft_get_contact(searched_id);
-	searched_one.ft_display_full_contact();
+	this->ft_get_contact(searched_id).ft_display_full_contact();
 	return ;
 }
 
