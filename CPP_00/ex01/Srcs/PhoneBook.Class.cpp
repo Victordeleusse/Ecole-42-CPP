@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:06:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 16:00:52 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:01:33 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ Contact	PhoneBook::ft_get_contact(int idx)
 
 void	PhoneBook::ft_add_contact(void)
 {
-	Contact		new_contact;
 	static int	count = 1;
 	int			nb_contacts = this->ft_get_nbcontacts();
 
