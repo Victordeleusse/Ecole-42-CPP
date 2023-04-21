@@ -53,6 +53,8 @@
 		"mutex": "cpp",
 		"ratio": "cpp",
 		"tuple": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"__split_buffer": "cpp",
+		"vector": "cpp"
 	}
 }
