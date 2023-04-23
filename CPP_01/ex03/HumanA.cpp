@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 17:01:44 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/23 15:52:46 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/04/23 17:02:08 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/04/23 17:25:07 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-int	main(void)
+HumanA::HumanA(std::string name_init, Weapon weapon) : name(name_init)
+{	
+	this->setWeaponA(weapon);
+	return;
+}
+
+HumanA::~HumanA(void)
 {
-	int	i = 0;
-	int	buffer;
-	
-	std::cout << "How many zombies in your hord ? ";
-	std::cin >> buffer;
-	Zombie	*horde = zombieHorde(buffer, "Titouan");
-	while (i < buffer)
-	{
-		horde[i].ft_anounce(i + 1);
-		i++;
-	}
-	delete [] horde;
-	return (0);
+	return;
+}
+
+void	HumanA::setWeaponA(Weapon weapon_type)
+{
+	this->weapon_type = weapon_type;
+	return ;
+}
+
+Weapon	HumanA::getWeapon(void)
+{
+	return()
 }
