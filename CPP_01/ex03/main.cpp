@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 17:02:08 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 10:35:27 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/04/24 10:04:03 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/04/24 10:09:41 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string name_init, Weapon weapon) : name(name_init), weapon_type(weapon)
-{	
-	return;
-}
-
-HumanA::~HumanA(void)
+int	main(void)
 {
-	return;
-}
+	Weapon	club = Weapon("crude spiked club");
+	HumanA	Bob = HumanA("Bob", club);
 
-void	HumanA::setType(Weapon weapon)
-{
-	this->weapon_type = weapon;
-	return ;
-}
-
-Weapon	HumanA::getWeaponA(void)
-{
-	return(this->weapon_type);
-}
-
-void	HumanA::attack(void)
-{
-	std::cout << this->name << "  attacks with their " << this->weapon_type.getType() << std::endl;
-	return ;
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
+	return (0);
 }

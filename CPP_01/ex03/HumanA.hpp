@@ -6,14 +6,14 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:57:53 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/23 17:25:52 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:03:41 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUMANA_H
 # define HUMANA_H
 
-# include <Weapon.hpp>
+# include "Weapon.hpp"
 
 class HumanA
 {
@@ -23,8 +23,8 @@ class HumanA
 		~HumanA(void);
 		
 		void	attack();
-		void	setWeaponA(Weapon &weapon_type);
-		Weapon	&getWeaponA(void);
+		void	setType(Weapon weapon_type);
+		Weapon	getWeaponA(void);
 		
 	private :
 

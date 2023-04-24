@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:38:02 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/23 17:06:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:38:22 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void Weapon::setType(std::string new_type)
 
 const std::string	&Weapon::getType(void)
 {
-	return (&this->type);
+	return (this->type);
 }
