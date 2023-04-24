@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 16:57:53 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 11:06:03 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/04/23 16:38:29 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/04/24 12:03:35 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-# define HUMANA_H
+#pragma once
+#ifndef WEAPON_H
+# define WEAPON_H
 
-# include "Weapon.hpp"
+# include <iostream>
+# include <string.h>
 
-class HumanA
+class	Weapon
 {
 	public :
+	
+		Weapon(std::string weapon_type);
+		~Weapon(void);
 		
-		HumanA(std::string name, Weapon &weapon);
-		~HumanA(void);
+		const std::string	&getType(void);
+		void				setType(std::string new_type);
 		
-		void	attack(void);
-
 	private :
 
-		std::string	name;
-		Weapon		&weapon_type;	
+		std::string	type;
 };
-
 
 #endif

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 16:38:29 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/23 16:51:53 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/04/24 10:45:18 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/04/24 12:03:30 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
+#pragma once
+#ifndef HUMANB_H
+# define HUMANB_H
 
-# include <iostream>
-# include <string.h>
+# include "Weapon.hpp"
 
-class	Weapon
+class HumanB
 {
 	public :
-	
-		Weapon(std::string weapon_type);
-		~Weapon(void);
-		
-		const std::string	&getType(void);
-		void				setType(std::string new_type);
-		
-	private :
 
-		std::string	type;
+		HumanB(std::string name);
+		~HumanB(void);
+
+		void	setWeapon(Weapon &weapon);
+		void	attack(void);
+
+	private :
+	
+		Weapon		*weapon;
+		std::string	name;	
 };
 
 #endif

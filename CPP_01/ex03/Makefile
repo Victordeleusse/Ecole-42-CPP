@@ -5,10 +5,14 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 SRCS = Weapon.cpp HumanA.cpp HumanB.cpp main.cpp
+SRCS_PATH = Srcs
 
-OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
+OBJS = ${patsubst %.cpp, ${OBJS_PATH}/%.o, ${SRCS}}
+OBJS_PATH = Objs
 
 DEPS = $(OBJS:.o=.d)
+
+INCLUDES = -I Includes
 
 #Colors:
 GREEN		=	\e[92;5;118m
@@ -24,8 +28,9 @@ CURSIVE		=	\e[33;3m
 
 all : ${NAME}
 
-%.o: %.cpp
-	@ ${CC} ${CFLAGS} -c $< -o $@
+$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.cpp
+	@ mkdir -p ${dir $@}
+	@ ${CC} ${CFLAGS} -c $< -o $@ $(INCLUDES)
 	clear
 
 ${NAME} : ${OBJS}
@@ -34,7 +39,7 @@ ${NAME} : ${OBJS}
 	@ echo "$(GREEN) 	- Ready to execute $(NAME)... $(RESET)"
 
 clean : 
-	@ ${RM} ${OBJS}
+	@ ${RM} ${OBJS_PATH}
 	clear
 
 fclean : clean
