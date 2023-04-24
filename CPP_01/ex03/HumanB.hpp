@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:45:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 11:49:23 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:51:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class HumanB
 		HumanB(std::string name);
 		~HumanB(void);
 
-		void	setWeapon(Weapon weapon);
+		void	setWeapon(Weapon &weapon);
 		void	attack(void);
 
 	private :

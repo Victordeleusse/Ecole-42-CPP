@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:07:58 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 11:49:19 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:51:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ HumanB::~HumanB(void)
 	return ;
 }
 
-void	HumanB::setWeapon(Weapon weapon_type)
+void	HumanB::setWeapon(Weapon &weapon_type)
 {
 	this->weapon = &weapon_type;
 	return ;
