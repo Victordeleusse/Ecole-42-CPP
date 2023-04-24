@@ -4,7 +4,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 
 RM = rm -rf
 
-SRCS = Weapon.cpp HumanA.cpp main.cpp
+SRCS = Weapon.cpp HumanA.cpp HumanB.cpp main.cpp
 
 OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
 
