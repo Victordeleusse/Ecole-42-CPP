@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:24:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 18:40:10 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:12:38 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,36 @@ void	ft_get_unchangedStr(std::string source, std::string str1, std::vector<int> 
 	(*unchanged_str).push_back(buffer);
 }
 
-
-int	main(int argc, char **argv)
+std::vector<std::string>	ft_parse(char **argv)
 {
 	std::ifstream				original(argv[1]);
-	if (original.bad())
-	{
-		std::cout << "Impossible d'ouvrir le fichier en entree" << std::endl;
-		return (1);
-	}
+	std::vector<std::string>	unchanged_str;
 	std::string					file_content;
 	std::vector<int>			positions;
-	std::vector<std::string>	unchanged_str;
-	std::string					str1 ("needle");
-	std::string					str2 ("thorn");
+	std::string					str1 (argv[2]);
 	
-	std::getline(original, file_content, '\0');
-	ft_get_positions(file_content, str1, &positions);
-	ft_get_unchangedStr(file_content, str1, positions, &unchanged_str);
-	
+	if (original.bad())
+		std::cout << "Impossible d'ouvrir le fichier en entree" << std::endl;
+	else 
+	{	
+		std::getline(original, file_content, '\0');
+		ft_get_positions(file_content, str1, &positions);
+		ft_get_unchangedStr(file_content, str1, positions, &unchanged_str);
+	}
+	original.close();
+	return (unchanged_str);
+}
+
+int	ft_replace(char **argv, std::vector<std::string> unchanged_str)
+{
+	std::string		str2 (argv[3]);
 	std::string		new_file = (std::string)argv[1] + "replace";
 	std::ofstream	copie(new_file);
+	
 	if (copie.bad())
 	{
 		std::cout << "Impossible d'ouvrir le fichier de retour" << std::endl;
-		return (1);
+		return (0);
 	}
 	std::vector<std::string>::iterator it = unchanged_str.begin();
 	while (it != unchanged_str.end() - 1)
@@ -80,5 +85,19 @@ int	main(int argc, char **argv)
 	if (!(*it).empty())
 		copie << *it;
 	copie.close();
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 4)
+	{	
+		std::cout << "Please enter 3 parameters as follow : ./better_call_sed INFILE str_to_replace str_substitute" << std::endl;
+		return (1);
+	}
+	if (ft_parse(argv).empty())
+		return (1);
+	if (!ft_replace(argv, ft_parse(argv)))
+		return (1);
 	return (0);
 }
