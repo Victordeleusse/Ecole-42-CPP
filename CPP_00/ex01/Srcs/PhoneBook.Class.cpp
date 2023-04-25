@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:06:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 19:10:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/25 20:08:10 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,16 @@ static int	ft_is_valid_index(int idx, PhoneBook *directory)
 
 void	PhoneBook::ft_display_contact(void)
 {
+	std::string	buffer;
 	int		searched_id = 0;
 
 	while(1)
 	{
 		std::cout << "\nPlease enter the searched contact index : ";
-		std::cin >> searched_id ;
-		std::cout << std::endl;
+		// std::cin >> searched_id ;
+		// std::cout << std::endl;
+		std::getline(std::cin, buffer);
+		searched_id = std::stoi(buffer);
 		if (ft_is_valid_index(searched_id, this))
 			break;
 		else

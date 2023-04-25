@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:43:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/14 15:48:20 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:51:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,16 @@ int	main(int argc, char **argv)
 	int	i;
 	
 	if (argc == 1)
+	{	
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" <<std::endl;
+		return (0);
+	}
 	i = 1;
 	while (i < argc)
 	{
 		std::cout << ft_capitalize((std::string)argv[i]);
 		i++;
 	}
+	std::cout << std::endl;
 	return (0);
 }

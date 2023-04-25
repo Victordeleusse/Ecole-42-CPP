@@ -55,6 +55,20 @@
 		"tuple": "cpp",
 		"variant": "cpp",
 		"__split_buffer": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"array": "cpp",
+		"bit": "cpp",
+		"deque": "cpp",
+		"unordered_map": "cpp",
+		"algorithm": "cpp",
+		"functional": "cpp",
+		"iterator": "cpp",
+		"memory_resource": "cpp",
+		"numeric": "cpp",
+		"optional": "cpp",
+		"random": "cpp",
+		"utility": "cpp",
+		"ranges": "cpp",
+		"span": "cpp"
 	}
 }

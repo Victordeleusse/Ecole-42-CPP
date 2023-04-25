@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 19:07:24 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:54:48 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	Contact::ft_set_id(int number)
 
 void	Contact::ft_init_contact(int number) 
 {	
-	std::cin.ignore();
 	this->first_name = ft_init_strdata("first name (lowercase letters only)");
 	this->last_name = ft_init_strdata("last name (lowercase letters only)");
 	this->nickname = ft_init_strdata("nickname (lowercase letters only)");
@@ -77,9 +76,9 @@ static int	is_a_valid_number(std::string name)
 std::string	Contact::ft_init_strdata(const std::string name)
 {
 	std::string	buffer = "";
-	std::cin.clear();
 	
-	while (1) {
+	while (1)
+	{
 		std::cout << "Please enter your " << name << " : " << std::flush << std::endl;
 		std::getline(std::cin,buffer);
 		std::cout << std::flush << std::endl;
@@ -154,6 +153,6 @@ void	Contact::ft_display_full_contact(void)
 	std::cout << "first name : " << this->first_name << std::flush << std::endl;
 	std::cout << "last name : " << this->last_name << std::flush << std::endl;
 	std::cout << "nickname : " << this->nickname << std::flush << std::endl;
-	std::cout << "phone number : " << this->nickname << std::flush << std::endl;
+	std::cout << "phone number : " << this->phone_number << std::flush << std::endl;
 	return ;
 }

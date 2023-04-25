@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:13:48 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 19:06:26 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/25 20:05:39 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_display_rules(void)
 static void	ft_get_order(std::string *input)
 {
 	std::cout << "\nINSTRUCTION -> ";
-	std::cin >> *input;
+	getline(std::cin, *input);
 	std::cout << std::endl;
 	return ;
 }
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 			my_directory.ft_add_contact();
 		else if (!input.compare("SEARCH"))
 			my_directory.ft_search_contact();
-		else if (!input.compare("EXIT"))
+		else if (!input.compare("EXIT") || std::cin.eof() == 1)
 			break;
 		else 
 			ft_display_error_input_msg();
