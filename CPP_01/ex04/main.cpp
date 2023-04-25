@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:24:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/24 19:12:38 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:25:06 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ std::vector<std::string>	ft_parse(char **argv)
 	std::vector<int>			positions;
 	std::string					str1 (argv[2]);
 	
-	if (original.bad())
-		std::cout << "Impossible d'ouvrir le fichier en entree" << std::endl;
+	if (original.bad() || original.fail())
+	{	
+		std::cout << "Unable to open the input file" << std::endl;
+		return (unchanged_str);
+	}
 	else 
 	{	
 		std::getline(original, file_content, '\0');
@@ -70,9 +73,9 @@ int	ft_replace(char **argv, std::vector<std::string> unchanged_str)
 	std::string		new_file = (std::string)argv[1] + "replace";
 	std::ofstream	copie(new_file);
 	
-	if (copie.bad())
+	if (copie.bad() || copie.fail())
 	{
-		std::cout << "Impossible d'ouvrir le fichier de retour" << std::endl;
+		std::cout << "Unable to open the output file" << std::endl;
 		return (0);
 	}
 	std::vector<std::string>::iterator it = unchanged_str.begin();
