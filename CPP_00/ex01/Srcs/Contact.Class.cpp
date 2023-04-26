@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:11:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/25 19:54:48 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:08:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ std::string	Contact::ft_init_strdata(const std::string name)
 	while (1)
 	{
 		std::cout << "Please enter your " << name << " : " << std::flush << std::endl;
-		std::getline(std::cin,buffer);
+		if (!(std::getline(std::cin, buffer)))
+			exit(1);
 		std::cout << std::flush << std::endl;
 		if (is_a_valid_name(buffer) && buffer != "")
 			break;
@@ -100,7 +101,8 @@ std::string	Contact::ft_init_strsecret(const std::string name)
 	while (buffer == "")
 	{
 		std::cout << "Please enter your " << name << " : " << std::flush << std::endl;
-		std::getline(std::cin,buffer);
+		if (!(std::getline(std::cin, buffer)))
+			exit(1);
 		std::cout << std::flush << std::endl;
 		if (buffer == "")
 			std::cout << "Sorry, can't be empty !" << std::flush << std::endl;
@@ -117,7 +119,8 @@ std::string	Contact::ft_init_digitdata(const std::string name)
 	
 	while (1) {
 		std::cout << "Please enter your " << name << " : " << std::flush << std::endl;
-		std::getline(std::cin,buffer);
+		if (!(std::getline(std::cin, buffer)))
+			exit(1);
 		std::cout << std::flush << std::endl;
 		if (is_a_valid_number(buffer) && buffer.length() == 10)
 			break;

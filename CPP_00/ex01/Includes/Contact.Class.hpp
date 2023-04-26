@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:51 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 17:18:05 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:09:37 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <stdlib.h>
 
 class Contact {
 

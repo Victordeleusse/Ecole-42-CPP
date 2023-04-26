@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:02:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/18 18:42:07 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:54:00 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <istream>
 # include <string>
+# include <stdlib.h> 
 # include "Contact.Class.hpp"
 
 class PhoneBook {
