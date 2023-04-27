@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:55:05 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/26 18:56:18 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:57:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	Fixed a;
 	Fixed b(a);
 	Fixed c;
-	
+
 	c = b;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;

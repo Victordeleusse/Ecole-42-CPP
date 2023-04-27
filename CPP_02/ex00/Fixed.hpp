@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:24:14 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/26 17:50:44 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:49:06 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ class Fixed
 	public :
 
 		Fixed(void);
-		Fixed(const Fixed &myFixed);
+		Fixed(const Fixed	& myFixed);
 		~Fixed(void);
 		
-		Fixed &	Fixed::operator=(const Fixed &myFixed);
+		Fixed &	operator=(const Fixed	& myFixed);
 		
-		int const	getRawBits(void);
-		void		setRawBits(const int raw);
+		int		getRawBits(void) const; // ici je vais chercher un int (number) que je decide ensuite de rendre const 
+		void	setRawBits(const int	raw);
 
 	private :
 	
@@ -34,6 +34,5 @@ class Fixed
 		static const int	_width;
 
 };
-
 
 #endif
