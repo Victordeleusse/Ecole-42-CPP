@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 18:33:30 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 18:46:41 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/30 19:13:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ class Point
 
 		Fixed	get_x(void) const;
 		Fixed	get_y(void) const;
-		void	set_x(const float abscisse);
-		void	set_y(const float ordonnee);
 
 	
 	private :
