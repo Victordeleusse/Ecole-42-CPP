@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:47:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 13:17:38 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:58:06 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ Fixed &	Fixed::operator=(const Fixed &myFixed)
 
 int		Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return(this->number);
 }
 
