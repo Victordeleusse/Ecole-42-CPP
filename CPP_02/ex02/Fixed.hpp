@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:35:01 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 17:01:18 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:26:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,14 @@ class Fixed
 		bool	operator!=(const Fixed &myFixed);
 
 		Fixed	&	operator++(void);				//Prefix increment operator.
-		Fixed	operator++(int);	//Postfix increment operator.
+		Fixed	operator++(int);					//Postfix increment operator.
+		Fixed	&	operator--(void);				//Prefix decrement operator.
+		Fixed	operator--(int);					//Postfix decrement operator.
 		
+		static Fixed		&	_min(Fixed &nbFix_1, Fixed &nbFix_2);
+		static const Fixed	&	_min_const(const Fixed &nbFix_1, const Fixed &nbFix_2);
+		static Fixed		&	_max(Fixed &nbFix_1, Fixed &nbFix_2);
+		static const Fixed	&	_max_const(const Fixed &nbFix_1, const Fixed &nbFix_2);
 		
 	private :
 

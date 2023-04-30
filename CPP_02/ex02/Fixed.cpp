@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:47:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 17:09:14 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:31:46 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,46 @@ Fixed	Fixed::operator++(int)
 	return(temp);
 }
 
-// Fixed	&	Fixed::operator--(void)
-// {
-// 	this->setRawBits(this->getRawBits() - this->getRawBits());
-// 	return(*this);
-// }
+Fixed	&	Fixed::operator--(void)
+{
+	--this->number;
+	return(*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	temp = *this;
+	
+	--temp;
+	return(temp);
+}
+
+//////////////////// Static members functions ////////////////////
+
+Fixed	&	Fixed::_min(Fixed &nbFix_1, Fixed &nbFix_2)
+{
+	if (nbFix_1 > nbFix_2)
+		return (nbFix_2);
+	return (nbFix_1);
+}
+
+const Fixed	&	Fixed::_min_const(const Fixed &nbFix_1, const Fixed &nbFix_2)
+{
+	if (nbFix_1.getRawBits() > nbFix_2.getRawBits())
+		return (nbFix_2);
+	return (nbFix_1);
+}
+
+Fixed	&	Fixed::_max(Fixed &nbFix_1, Fixed &nbFix_2)
+{
+	if (nbFix_1 > nbFix_2)
+		return (nbFix_1);
+	return (nbFix_2);
+}
+
+const Fixed	&	Fixed::_max_const(const Fixed &nbFix_1, const Fixed &nbFix_2)
+{
+	if (nbFix_1.getRawBits() > nbFix_2.getRawBits())
+		return (nbFix_1);
+	return (nbFix_2);
+}
