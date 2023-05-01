@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:47:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 18:31:46 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:09:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ Fixed	Fixed::operator++(int)
 {
 	Fixed	temp = *this;
 	
-	++temp;
+	++this->number;
 	return(temp);
 }
 
@@ -163,7 +163,7 @@ Fixed	Fixed::operator--(int)
 {
 	Fixed	temp = *this;
 	
-	--temp;
+	--this->number;
 	return(temp);
 }
 

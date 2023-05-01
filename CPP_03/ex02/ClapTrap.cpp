@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:45:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/01 15:32:14 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:29:40 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 ClapTrap::ClapTrap(std::string new_name) : name(new_name), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Constructor called  : " << this->name << " has been created." << std::endl;
+	std::cout << "ClapTrap Constructor called  : " << this->name << " has been created." << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &myClapTrap)
 {
-	std::cout << "Copy constructor from " << myClapTrap.name << " called." << std::endl;
+	std::cout << "ClapTrap Copy constructor from " << myClapTrap.name << " called." << std::endl;
 	*this = myClapTrap;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called : bye-bye " << this->name << std::endl;
+	std::cout << "ClapTrap Destructor called : bye-bye " << this->name << std::endl;
 	return ;
 }
 
