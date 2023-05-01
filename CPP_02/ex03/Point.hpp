@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 18:33:30 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 19:13:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:40:15 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class Point
 
 		const Fixed	x;
 		const Fixed y;	
-}
+};
 
-
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

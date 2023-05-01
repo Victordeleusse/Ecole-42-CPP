@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 18:45:57 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/04/30 19:13:50 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:31:37 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ Point::~Point(void)
 
 Point	&	Point::operator=(const Point &myPoint)
 {
-	if (*this != myPoint)
+	if (this != &myPoint)
 	{	
-		this->x = myPoint.get_x();
-		this->y = myPoint.get_y();
+		(Fixed)this->x = myPoint.get_x();
+		(Fixed)this->y = myPoint.get_y();
 	}
 	return (*this);
 }
