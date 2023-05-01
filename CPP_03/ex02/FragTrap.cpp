@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:25:25 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/01 18:43:17 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:45:23 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ FragTrap	&	FragTrap::operator=(const FragTrap &myFragTrap)
 
 void	FragTrap::highFivesGuys(void)
 {
+	if (!this->hit_points)
+	{	
+		std::cout << "FragTrap " << this->name << " can't ask anything because he has no more hit point! " << std::endl;
+		return ;
+	}
+	if (!this->energy_points)
+	{	
+		std::cout << "FragTrap " << this->name << " can't ask anything because he has no more energy point! " << std::endl;
+		return ;
+	}
 	std::cout << "FragTrap  " << this->name << " asking for a high five ! " << std::endl;
+	this->energy_points--;
 	return ;	
 }
