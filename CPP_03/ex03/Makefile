@@ -1,10 +1,10 @@
-NAME = frag
+NAME = diamond
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 
 RM = rm -rf
 
-SRCS = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
+SRCS = FragTrap.cpp ClapTrap.cpp ScavTrap.cpp DiamondTrap.cpp main.cpp
 
 OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
 
