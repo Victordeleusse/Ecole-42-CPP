@@ -6,12 +6,13 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:03:39 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 11:21:18 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:02:47 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int	main(void)
 {
@@ -33,6 +34,18 @@ int	main(void)
 	delete j;
 	delete i;
 	delete k;
+
+	const Animal* wrong_meta = new WrongAnimal();
+	const WrongAnimal* c = new WrongCat();
+
+	std::cout << wrong_meta->getType() << " " << std::endl;
+	std::cout << c->getType() << " " << std::endl;
+
+	wrong_meta->makeSound();
+	c->makeSound();
+
+	delete wrong_meta;
+	delete c;
 
 return 0;
 }
