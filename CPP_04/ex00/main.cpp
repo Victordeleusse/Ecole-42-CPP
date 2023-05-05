@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:03:39 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:55:28 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:21:18 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(void)
 	std::cout << k->getType() << " " << std::endl;
 	
 	i->makeSound(); //will output the cat sound!
-	// j->makeSound();
-	// meta->makeSound();
+	j->makeSound();
+	meta->makeSound();
 	
 	delete meta;
 	delete j;

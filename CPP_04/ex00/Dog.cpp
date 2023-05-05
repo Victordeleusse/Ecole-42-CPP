@@ -6,19 +6,19 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:36:25 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:57:08 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:30:44 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(void) : type("Dog")
+Dog::Dog(void) : Animal("Dog")
 {
 	std::cout << "Dog constructor has been called" << std::endl;
 	return ;
 }
 
-Dog::Dog(const Dog &myDog)
+Dog::Dog(const Dog &myDog) : Animal()
 {
 	std::cout << "Copie constructor Dog has been called" << std::endl;
 	*this = myDog;
@@ -39,13 +39,13 @@ Dog	&	Dog::operator=(const Dog &myDog)
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << "The dog barks" << std::endl;
 	return ;
 }
 
-std::string	Dog::getType(void) const
-{
-	return (this->type);
-}
+// std::string	Dog::getType(void) const
+// {
+// 	return (this->type);
+// }

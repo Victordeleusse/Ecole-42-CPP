@@ -6,19 +6,19 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:58:35 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:57:05 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:30:34 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void) : type("Cat")
+Cat::Cat(void) : Animal("Cat")
 {
 	std::cout << "Cat constructor has been called" << std::endl;
 	return ;
 }
 
-Cat::Cat(const Cat &myCat)
+Cat::Cat(const Cat &myCat) : Animal()
 {
 	std::cout << "Cat constructor Dog has been called" << std::endl;
 	*this = myCat;
@@ -39,13 +39,8 @@ Cat	&	Cat::operator=(const Cat &myCat)
 	return (*this);
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << "The cat meows" << std::endl;
 	return ;
-}
-
-std::string	Cat::getType(void) const
-{
-	return (this->type);
 }

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:51:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:15:13 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:27:18 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ class Cat : public Animal
 
 		Cat	&	operator=(const Cat &myCat);
 		
-		void		makeSound(void);
-		std::string	getType(void) const;
+		void		makeSound(void) const;
 
-	protected :
-
-		std::string	type; 
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:29:47 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:47:19 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:24:34 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Animal
 
 		Animal & operator=(const Animal &myAnimal);
 
-		virtual std::string		getType(void) const;
-		virtual void	makeSound(void);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
 
 	protected :
 	

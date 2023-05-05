@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:33:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 10:57:01 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:20:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Animal	&	Animal::operator=(const Animal &myAnimal)
 	return (*this);
 }
 
-void	Animal::makeSound(void)
+void	Animal::makeSound(void) const
 {
 	std::cout << "Animal makes a sound" << std::endl;
 	return ;
