@@ -6,11 +6,20 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:25:25 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/01 18:45:23 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:35:43 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap(void) : ClapTrap()
+{
+	std::cout << "FragTrap Default Constructor called" << std::endl;
+	this->hit_points = 100;
+	this->energy_points = 100;
+	this->attack_damage = 30;
+	return ;
+}
 
 FragTrap::FragTrap(std::string new_name) : ClapTrap(new_name)
 {

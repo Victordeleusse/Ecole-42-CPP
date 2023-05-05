@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:38:56 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/04 11:34:38 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:31:18 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class ClapTrap
 		void	beRepaired(unsigned int amount);
 			
 	protected :
+
+		ClapTrap(void);
 
 		std::string		name;
 		unsigned int	hit_points;

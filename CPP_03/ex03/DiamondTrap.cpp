@@ -6,22 +6,30 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:56:06 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/04 18:28:17 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:56:49 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string new_name) : ClapTrap(new_name), ScavTrap(new_name), FragTrap(new_name), name(new_name)
+
+DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap()
 {
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
+	std::cout << "Default constructor for DiamondTrap called" << std::endl;
+	return;
+}
+
+DiamondTrap::DiamondTrap(std::string new_name) :  ClapTrap(), ScavTrap(new_name), FragTrap(new_name), name(new_name)
+{
+	std::cout << "Constructor for DiamondTrap called" << std::endl;
 	this->ClapTrap::name = new_name + "_clap_name";
+	this->hit_points = 100;
+	this->energy_points = 50;
+	this->attack_damage = 30;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &DiamondTrap) : ClapTrap(DiamondTrap.name), ScavTrap(DiamondTrap.name), FragTrap(DiamondTrap.name)
+DiamondTrap::DiamondTrap(const DiamondTrap &DiamondTrap) : ClapTrap(), ScavTrap(DiamondTrap.name), FragTrap(DiamondTrap.name)
 {
 	*this = DiamondTrap;
 	return ;

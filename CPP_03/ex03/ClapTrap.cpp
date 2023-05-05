@@ -6,11 +6,18 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:45:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/01 16:29:40 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:33:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(void) : name(""), hit_points(10), energy_points(10), attack_damage(0)
+{
+	
+	std::cout << "ClapTrap Default Constructor called." << std::endl;
+	return ;
+}
 
 ClapTrap::ClapTrap(std::string new_name) : name(new_name), hit_points(10), energy_points(10), attack_damage(0)
 {
@@ -71,7 +78,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	{	
 		std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage! ";
 		this->hit_points -= amount;
-		std::cout << "He has now " << this->hit_points << " hit points left! " << std::endl;
+		std::cout << "He has now " << this->hit_points << " hit points left! // " << this->energy_points << std::endl;
 	}
 	else
 	{

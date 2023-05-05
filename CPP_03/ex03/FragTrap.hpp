@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:38:17 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/04 18:19:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:32:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ class FragTrap : virtual public ClapTrap
 		FragTrap	&	operator=(const FragTrap &myFragTrap);
 	
 		void	highFivesGuys(void);
+
+	protected :
+	
+		FragTrap(void);
+
 };
 
 #endif
