@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:51:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 17:24:18 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/05 10:03:39 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/07 17:27:18 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-# include "Animal.hpp"
-# include "Brain.hpp"
-
-class Cat : public Animal 
+int	main(void)
 {
-	public :
+	// const Animal test = Animal();
+	const Animal* i = new Dog();
+	const Animal* j = new Cat();
+	const Dog* k = new Dog();
+	const Cat* l = new Cat();
+	
+	const Animal* tab[] = {i,j,k,l};
+	i->makeSound();
+	l->makeSound();
 
-		Cat(void);
-		Cat(const Cat &myCat);
-		~Cat(void);
-
-		Cat	&	operator=(const Cat &myCat);
-		
-		void	makeSound(void) const;
-		Brain	*getBrain(void);
-		
-	private :
-
-		Brain	*Cat_brain;
-		
-};
-
-#endif
+	int	size = sizeof(tab) / sizeof(Animal *);
+	while (size)
+	{
+		delete tab[size];
+		size--;
+	}
+	return 0;
+}

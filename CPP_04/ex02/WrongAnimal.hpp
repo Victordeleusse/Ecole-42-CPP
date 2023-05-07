@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:51:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 17:24:18 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/05 11:52:43 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/05 16:00:30 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#ifndef WRONGANIMAL_H
+# define WRONGANIMAL_H
 
 # include "Animal.hpp"
-# include "Brain.hpp"
 
-class Cat : public Animal 
+class WrongAnimal : virtual public Animal
 {
 	public :
+	
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &myWrongAnimal);
+		virtual ~WrongAnimal(void);
 
-		Cat(void);
-		Cat(const Cat &myCat);
-		~Cat(void);
-
-		Cat	&	operator=(const Cat &myCat);
+		WrongAnimal	&	operator=(const WrongAnimal &myWrongAnimal);
 		
 		void	makeSound(void) const;
-		Brain	*getBrain(void);
-		
-	private :
-
-		Brain	*Cat_brain;
-		
 };
 
 #endif
