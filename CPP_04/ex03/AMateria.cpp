@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:49:54 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 19:36:22 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:42:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ const std::string	&	AMateria::getType(void)
 	return(this->type);
 }
 
-// clone function -> A pure virtual function, not necessarily defined
+// 1 : clone function -> A pure virtual function, not necessarily defined
 
 void	AMateria::use(ICharacter& target)
 {
 	std::cout << "* use function called for " << target.name << " *" << std::endl;
 	return ;
 }
+// 2 : pourquoi ne pas rendre cette fonction virtuelle pure ??
