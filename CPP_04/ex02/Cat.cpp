@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:58:35 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 16:49:10 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:33:58 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Cat::Cat(void) : Animal("Cat")
 
 Cat::Cat(const Cat &myCat) : Animal()
 {
-	std::cout << "Cat constructor Dog has been called" << std::endl;
+	std::cout << "Copie constructor Cat has been called" << std::endl;
 	*this = myCat;
 	return ;
 }

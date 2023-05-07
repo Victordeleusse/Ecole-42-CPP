@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:33:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 11:38:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:28:11 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ Animal	&	Animal::operator=(const Animal &myAnimal)
 	return (*this);
 }
 
-void	Animal::makeSound(void) const
-{
-	std::cout << "Animal makes a sound" << std::endl;
-	return ;
-}
+// void	Animal::makeSound(void) const
+// {
+// 	std::cout << "Animal makes a sound" << std::endl;
+// 	return ;
+// }
 
 std::string	Animal::getType(void) const
 {
