@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 19:42:43 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 19:57:08 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/07 20:06:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Ice : public AMateria
 {
-
 	public :
 	
 		Ice(void);
