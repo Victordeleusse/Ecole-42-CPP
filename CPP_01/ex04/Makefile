@@ -4,7 +4,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 
 RM = rm -rf
 
-SRCS = main.cpp utils.cpp
+SRCS = main.cpp SedWinner.cpp
 
 OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
 
