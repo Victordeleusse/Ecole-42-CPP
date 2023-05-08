@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:26:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/08 13:14:21 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:28:21 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,9 @@ void	MySed::ft_replace(std::string s1, std::string s2)
 	if (reading_file && writting_file)
 	{
 		std::string		buffer ("");
-		while (std::getline(reading_file, buffer, '`'))
-		{
-			buffer = ft_clean_line(buffer, s1, s2);
-			writting_file << buffer;
-		}
+		std::getline(reading_file, buffer, '\0');
+		buffer = ft_clean_line(buffer, s1, s2);
+		writting_file << buffer;
 		reading_file.close();
 		writting_file.close();		
 	}
