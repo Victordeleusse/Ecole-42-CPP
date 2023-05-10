@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:36:25 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/05 11:38:05 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:37:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,8 @@ void	Dog::makeSound(void) const
 	std::cout << "The dog barks" << std::endl;
 	return ;
 }
+
+// int	Dog::get_indx(void) const
+// {
+// 	return (this->idx);
+// }

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 19:42:43 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 20:06:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:42:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ICE_H
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -27,6 +28,6 @@ class Ice : public AMateria
 
 		AMateria* clone() const;
 		void use(ICharacter& target);
-}
+};
 
 #endif

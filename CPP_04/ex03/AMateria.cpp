@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:49:54 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 19:42:36 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:08:49 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ AMateria::~AMateria(void)
 	return ;
 }
 
-Amateria	&	AMateria::operator=(const AMateria &myAMateria)
+AMateria	&	AMateria::operator=(const AMateria &myAMateria)
 {
 	std::cout << "AMateria assignment operator has been called" << std::endl;
 	if (this != &myAMateria)
@@ -39,7 +39,7 @@ Amateria	&	AMateria::operator=(const AMateria &myAMateria)
 	return (*this);
 }
 
-const std::string	&	AMateria::getType(void)
+const std::string	&	AMateria::getType(void) const
 {
 	return(this->type);
 }

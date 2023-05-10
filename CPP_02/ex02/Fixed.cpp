@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:47:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/01 18:11:55 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:39:17 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ bool	Fixed::operator!=(const Fixed &myFixed)
 Fixed	Fixed::operator+(const Fixed &myFixed)
 {
 	Fixed	result(this->toFloat() + myFixed.toFloat());
-	
+		
 	return (result);
 }
 

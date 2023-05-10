@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 19:48:08 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 20:03:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:54:21 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,20 @@ Ice::~Ice(void)
 
 Ice	&	Ice::operator=(const Ice &myIce)
 {
-	if (this == &myIce)
-		return (*this);
-	this->type = myIce.type;
+	if (this != &myIce)
+		*this = myIce;
 	return (*this);
+}
+
+AMateria	*Ice::clone(void)  const
+{
+	AMateria	*myIce = new Ice();
+	
+	return (myIce);
 }
 
 void	Ice::use(ICharacter &target)
 {
 	std::cout << "* shoots an ice bolt at " << target.name << " *" << std::endl;
 	return ;
-}
-
-AMateria	*Ice::clone(void)  const
-{
-	const Ice	*myAMateria = new Ice();
-	
-	myAMateria = this;
-	return (myAMateria);
 }

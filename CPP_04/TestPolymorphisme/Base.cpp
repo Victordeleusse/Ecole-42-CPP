@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 09:51:59 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 16:37:31 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/10 17:29:27 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/10 17:30:29 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#include "Base.hpp"
 
-# include "Animal.hpp"
-
-class Cat : public Animal
+Base::Base(void)
 {
-	public :
+	std::cout << "Base Constructor called" << std::endl;
+	return ;
+}
 
-		Cat(void);
-		Cat(const Cat &myCat);
-		~Cat(void);
-
-		Cat	&	operator=(const Cat &myCat);
-		
-		void	makeSound(void) const;
-
-		// int		get_indx(void) const {return (0);};
-		
-};
-
-#endif
+Base::~Base(void)
+{
+	std::cout << "Base Destructor called" << std::endl;
+	return ;
+}

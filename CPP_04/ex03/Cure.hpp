@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:05:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 20:07:54 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:06:43 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CURE_H
 
 # include "AMateria.hpp" 
+# include "ICharacter.hpp"
+
 
 class Cure : public AMateria
 {
@@ -27,6 +29,7 @@ class Cure : public AMateria
 
 		AMateria* clone() const;
 		void use(ICharacter& target);
-}
+
+};
 
 #endif
