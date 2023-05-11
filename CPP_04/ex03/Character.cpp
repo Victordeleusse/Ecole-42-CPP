@@ -6,11 +6,12 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:03:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 20:25:32 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:49:43 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "ICharacter.hpp"
 
 
 Character::Character(const std::string character_name) : ICharacter()
@@ -37,7 +38,19 @@ Character::Character(const Character &myCharacter) : ICharacter()
 
 Character::~Character()
 {
+	int	i = 0;
+	
 	std::cout << "Character destructor has been called" << std::endl;
+	if (this->tab)
+	{
+		while (i < 4)
+		{
+			if (this->tab[i])
+				delete this->tab[i];
+			i++;
+		}
+		delete [] this->tab;
+	}
 	return ;
 }
 
@@ -98,5 +111,8 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	
+	if (idx > 3 || !this->tab[idx])
+		return ;
+	this->tab[idx]->use(target);
+	return ;
 }

@@ -6,12 +6,16 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:51:00 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 17:55:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:49:54 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_H
 # define ICHARACTER_H
+
+// CLASSE ABSTRAITE -> INTERFACE
+
+#include "Character.hpp"
 
 class ICharacter
 {

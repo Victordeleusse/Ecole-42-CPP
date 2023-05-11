@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:49:54 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 19:08:49 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:21:51 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ AMateria	&	AMateria::operator=(const AMateria &myAMateria)
 const std::string	&	AMateria::getType(void) const
 {
 	return(this->type);
+}
+
+void	AMateria::setType(const std::string new_type)
+{
+	this->type = new_type;
+	return ;
 }
 
 // 1 : clone function -> A pure virtual function, not necessarily defined

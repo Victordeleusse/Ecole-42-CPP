@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:37:40 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 19:08:42 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:20:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define AMATERIA_H
 
 # include <iostream>
+# include <string.h>
 # include "ICharacter.hpp"
+
+// CLASSE ABSTRAITE
 
 class AMateria
 {
@@ -30,9 +33,10 @@ class AMateria
 		
 		AMateria & operator=(const AMateria & myAMateria);
 		
-		std::string const & getType(void) const; //Returns the materia type
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		std::string const &	getType(void) const;
+		void				setType(void);
+		virtual AMateria*	clone() const = 0;
+		virtual void		use(ICharacter& target);
 };
 
 #endif

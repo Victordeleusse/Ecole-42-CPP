@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:54:15 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 18:53:05 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:00:51 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define IMATERIASOURCE_H
 
 # include "AMateria.hpp"
+
+// CLASSE ABSTRAITE -> INTERFACE
 
 class IMateriaSource
 {
