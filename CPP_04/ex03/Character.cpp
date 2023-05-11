@@ -6,13 +6,11 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:03:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/11 12:49:43 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:59:02 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
-#include "ICharacter.hpp"
-
+#include "All.hpp"
 
 Character::Character(const std::string character_name) : ICharacter()
 {
@@ -104,7 +102,7 @@ void	Character::unequip(int idx)
 {
 	if (nb_AMpresents == 0)
 		return ; 
-	delete this->tab[idx];
+	this->tab[idx] = NULL;
 	nb_AMpresents--;
 	return ;
 }

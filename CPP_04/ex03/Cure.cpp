@@ -6,11 +6,11 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:17:27 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:48 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:22:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
+#include "All.hpp"
 
 Cure::Cure(void) : AMateria("cure")
 {
@@ -42,12 +42,13 @@ AMateria* Cure::clone() const
 {
 	AMateria	*myCure = new Cure();
 	
+	*myCure = *this;
 	return (myCure);
 }
 
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.name << "'s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 	return ;
 }
 

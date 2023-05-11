@@ -6,15 +6,12 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:58:33 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 20:14:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:01:26 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_H
 # define CHARACTER_H
-
-# include "ICharacter.hpp"
-# include "AMateria.hpp"
 
 class Character : public ICharacter
 {

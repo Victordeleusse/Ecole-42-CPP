@@ -6,15 +6,12 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 19:42:43 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/10 14:42:32 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:43:16 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_H
 # define ICE_H
-
-# include "AMateria.hpp"
-# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {

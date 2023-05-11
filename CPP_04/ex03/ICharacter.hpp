@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:51:00 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/11 12:49:54 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:59:08 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 // CLASSE ABSTRAITE -> INTERFACE
 
-#include "Character.hpp"
+# include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

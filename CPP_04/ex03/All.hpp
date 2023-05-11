@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   All.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 20:05:45 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/11 14:43:20 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/11 14:40:01 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/11 14:48:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_H
-# define CURE_H
+#ifndef ALL_H
+# define ALL_H
 
-class Cure : public AMateria
-{
-	public :
+# include <iostream>
+# include <string.h>
 
-		Cure(void);
-		Cure(const Cure &myCure);
-		~Cure(void);
-		
-		Cure	&	operator=(const Cure &myCure);
-
-		AMateria* clone() const;
-		void use(ICharacter& target);
-
-};
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
+# include "Character.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
+# include "IMateriaSource.hpp"
+# include "MateriaSource.hpp"
 
 #endif
