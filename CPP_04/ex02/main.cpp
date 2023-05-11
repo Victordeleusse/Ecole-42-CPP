@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:03:39 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/07 17:27:18 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:15:54 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 	int	size = sizeof(tab) / sizeof(Animal *);
 	while (size)
 	{
-		delete tab[size];
+		delete tab[size - 1];
 		size--;
 	}
 	return 0;
