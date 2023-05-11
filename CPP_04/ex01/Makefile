@@ -1,7 +1,7 @@
 NAME = burn
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 RM = rm -rf
 
 SRCS = Animal.cpp Brain.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp main.cpp
