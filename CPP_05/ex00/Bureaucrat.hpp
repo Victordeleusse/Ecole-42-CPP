@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 18:13:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/15 14:57:02 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/19 14:25:41 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/19 14:30:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#ifndef BUREAUCRAT_H
+# define BUREAUCRAT_H
 
-int	main(void)
+# include <iostream>
+# include <string.h>
+
+class Bureaucrat
 {
-	DiamondTrap	Perso1("Victor");
-	DiamondTrap	Perso2("Jeanne");
-	DiamondTrap	Perso3("Pierre");
-
-	Perso1.attack("Alice");
-	Perso1.whoAmI();
-	Perso2.highFivesGuys();
-	Perso3.takeDamage(20);
-	Perso3.beRepaired(10);
 	
-	return (0);	
 }
+
+
+#endif
