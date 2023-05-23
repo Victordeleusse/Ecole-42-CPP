@@ -6,28 +6,35 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:45:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 09:53:25 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:33:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) : name(""), hit_points(10), energy_points(10), attack_damage(0)
+{
+	
+	std::cout << "ClapTrap Default Constructor called." << std::endl;
+	return ;
+}
+
 ClapTrap::ClapTrap(std::string new_name) : name(new_name), hit_points(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Constructor called  : " << this->name << " has been created." << std::endl;
+	std::cout << "ClapTrap Constructor called  : " << this->name << " has been created." << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &myClapTrap)
 {
-	std::cout << "Copy constructor from " << myClapTrap.name << " called." << std::endl;
+	std::cout << "ClapTrap Copy constructor from " << myClapTrap.name << " called." << std::endl;
 	*this = myClapTrap;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called : bye-bye " << this->name << std::endl;
+	std::cout << "ClapTrap Destructor called : bye-bye " << this->name << std::endl;
 	return ;
 }
 
@@ -56,7 +63,7 @@ void	ClapTrap::attack(const std::string &target)
 		return ;
 	}
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;
-	this->energy_points --;
+	this->energy_points--;
 	return ;
 }
 
@@ -71,7 +78,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	{	
 		std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage! ";
 		this->hit_points -= amount;
-		std::cout << "He has now " << this->hit_points << " hit points left! " << std::endl;
+		std::cout << "He has now " << this->hit_points << " hit points left! // " << this->energy_points << std::endl;
 	}
 	else
 	{
