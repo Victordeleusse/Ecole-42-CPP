@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:35:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/20 20:08:14 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:34:56 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,27 @@ void	Bureaucrat::downgradeBureaucrat(void)
 	this->grade++;
 	return ;
 }
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Bureaucrat::exception: Grade is to high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Bureaucrat::exception: Grade is to low");
+}
+
+const char *Bureaucrat::InitGradeTooHighException::what(void) const throw()
+{
+	return ("Bureaucrat::exception: Grade is to high - Bureaucrat not generated");
+}
+
+const char *Bureaucrat::InitGradeTooLowException::what(void) const throw()
+{
+	return("Bureaucrat::exception: Grade is to low - Bureaucrat destroyed"); 
+}
+
 
 /////////////////
 

@@ -1,10 +1,10 @@
-NAME = form
+NAME = bureaucrat
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 RM = rm -rf
 
-SRCS = Bureaucrat.cpp Form.cpp main.cpp
+SRCS = Bureaucrat.cpp main.cpp
 
 OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
 

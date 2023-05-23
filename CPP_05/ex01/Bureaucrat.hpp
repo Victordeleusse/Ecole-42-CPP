@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:25:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/20 19:48:28 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:35:05 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class Bureaucrat
 {
 	public :
 	
-		// Bureaucrat(void);
 		Bureaucrat(const std::string myName, int grade);
 		Bureaucrat(const Bureaucrat &myBureaucrat);
 		~Bureaucrat(void);
@@ -36,34 +35,22 @@ class Bureaucrat
 		class	GradeTooHighException: public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("Bureaucrat::exception: Grade is to high");
-				}
+				virtual const char *what() const throw();
 		};
 		class	GradeTooLowException: public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return("Bureaucrat::exception: Grade is to low"); 
-				}
+				virtual const char *what() const throw();
 		};
 		class	InitGradeTooHighException: public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return ("Bureaucrat::exception: Grade is to high - Bureaucrat destroyed");
-				}
+				virtual const char *what() const throw();
 		};
 		class	InitGradeTooLowException: public std::exception
 		{
 			public:
-				virtual const char *what() const throw()
-				{
-					return("Bureaucrat::exception: Grade is to low - Bureaucrat destroyed"); 
-				}
+				virtual const char *what() const throw();
 		};
 		
 	private :
