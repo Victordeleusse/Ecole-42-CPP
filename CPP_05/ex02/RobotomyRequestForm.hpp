@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:00:53 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:44:15 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:11:48 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm	&	operator=(const RobotomyRequestForm &myRobotomy);
 
 		void	execute(const Bureaucrat &executor) const;
+
+	private :
+		
+		static int	_round;
 
 };
 

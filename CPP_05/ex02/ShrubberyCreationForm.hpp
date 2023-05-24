@@ -6,14 +6,13 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:02:47 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:44:09 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:08:49 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_H
 # define SHRUBBERYCREATIONFORM_H
 
-# include <fstream>
 # include "Form.hpp"
 
 class ShrubberyCreationForm : public Form
@@ -29,7 +28,5 @@ class ShrubberyCreationForm : public Form
 		void	execute(const Bureaucrat &executor) const;
 				
 };
-
-// OPERATOR << TO TEST
 
 #endif

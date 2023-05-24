@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:20:26 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:49:06 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:01:49 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm	&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm & myShrubbery)
 {
+	(void)myShrubbery;
 	return (*this);
 }
 
@@ -41,8 +42,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 		throw(GradeTooLowException());
 	std::string filename;
 	filename = this->getTarget() + ".txt";
-	std::ofstream MyFile(filename);
-	MyFile << " TREE FOREST " << std::endl;
-	MyFile.close();
+	std::ofstream outfile (filename.c_str());
+	outfile << " TREE FOREST " << std::endl;
+	outfile.close();
 	return ;
 }

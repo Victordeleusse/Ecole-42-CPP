@@ -4,7 +4,7 @@ CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 RM = rm -rf
 
-SRCS = Bureaucrat.cpp Form.cpp main.cpp
+SRCS = Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp main.cpp
 
 OBJS = ${patsubst %.cpp, %.o, ${SRCS}}
 
@@ -36,6 +36,7 @@ ${NAME} : ${OBJS}
 clean : 
 	@ ${RM} ${OBJS}
 	@ ${RM} *replace
+	@ ${RM} *.txt
 	clear
 
 fclean : clean

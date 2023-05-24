@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:27:29 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:47:42 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:44:17 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FORM_H
 
 # include "Bureaucrat.hpp"
-# include <stdbool.h>
+
+class Bureaucrat;
 
 class Form
 {
@@ -22,7 +23,7 @@ class Form
 
 		Form(std::string myName, int initGradeSign, int initGradeExec, std::string myTarget);
 		Form(const Form &myForm);
-		~Form();
+		virtual ~Form();
 
 		Form	&	operator=(const Form &myForm);
 		
@@ -32,7 +33,7 @@ class Form
 		int					getGradeForSignature() const;
 		int					getGradeForExecution() const;	
 		
-		void	beSigned(Bureaucrat myBureaucrat);
+		void	beSigned(Bureaucrat &myBureaucrat);
 		
 		class GradeTooHighException : public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:32:10 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:52:25 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:24:53 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm	&	PresidentialPardonForm::operator=(const PresidentialPardonForm &myPresident)
 {
+	(void)myPresident;
 	return (*this);
 }
 

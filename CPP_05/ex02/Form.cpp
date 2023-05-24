@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:27:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 11:48:16 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:16:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	Form::getGradeForExecution() const
 	return (this->gradeForExecution);
 }
 
-void	Form::beSigned(Bureaucrat myBureaucrat)
+void	Form::beSigned(Bureaucrat &myBureaucrat)
 {
 	if (this->isSigned)
 		std::cout << this->getName() << " is already signed." << std::endl;
@@ -120,11 +120,11 @@ const char* Form::IsNotSignedException::what(void) const throw()
 
 std::ostream & operator<<(std::ostream &myOstream, const Form &myForm)
 {
-	myOstream << "This document named " << myForm.getName() << " needs to be signed by Bureaucrats level " << myForm.getGradeForSignature() << " and executed by Bureaucrats level " << myForm.getGradeForExecution();
+	myOstream << "This document named " << myForm.getName() << "\n\t needs to be signed by Bureaucrats level " << myForm.getGradeForSignature() << "\n\t and executed by Bureaucrats level " << myForm.getGradeForExecution();
 	if (myForm.getIsSigned())
-		myOstream << "\n\t -> this document is already signed." << std::endl;
+		myOstream << "\n\t\t\t|| -> this document is already signed. ||" << std::endl;
 	else
-		myOstream << "\n\t -> this document is not signed yet." << std::endl;
+		myOstream << "\n\t\t\t|| -> this document is not signed yet. ||" << std::endl;
 	return (myOstream);
 }
 
