@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:24 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/20 20:19:53 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:40:31 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(void)
 	{
 		// Bureaucrat *Victor = new Bureaucrat("Victor", 1);
 		// Bureaucrat Jean("Jean", 0);
+
 		Bureaucrat Victor("Victor", 1);
 		Bureaucrat Antoine("Antoine", 150);
 		Bureaucrat Jeanne("Jeanne", 2);

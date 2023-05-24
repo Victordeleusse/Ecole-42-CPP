@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:35:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 18:37:30 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:39:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &myBureaucrat)
 	if (this != &myBureaucrat)
 	{
 		*const_cast<std::string *>(&this->name) = myBureaucrat.getName();
+		// *const_cast<std::string *>(&this->name) = "Rotciv";
 		this->grade = myBureaucrat.getGrade();
 	}
 	return (*this);
@@ -71,6 +72,16 @@ void	Bureaucrat::downgradeBureaucrat(void)
 		throw (GradeTooLowException());
 	this->grade++;
 	return ;
+}
+
+void	Bureaucrat::executeForm(const Form & form)
+{
+	if (!form.getIsSigned())
+		throw(Form::IsNotSignedException());
+	if (this->getGrade() > form.getGradeForExecution())
+		throw(Form::GradeTooLowException());
+	form.execute(*this);
+	return;
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
