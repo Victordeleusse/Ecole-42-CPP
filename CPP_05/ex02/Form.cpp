@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:27:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 18:26:45 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:48:16 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ Form & Form::operator=(const Form &myForm)
 	return (*this);
 }
 
+/////////////// CLASS FUNCTIONS ///////////////
+
 std::string Form::getName() const
 {
 	return(this->name);
@@ -88,6 +90,17 @@ void	Form::beSigned(Bureaucrat myBureaucrat)
 	return ;
 }
 
+/////////////// CHECK FUNCTION ///////////////
+
+bool	Form::bureaucratCanExecute(const Bureaucrat &executor) const
+{
+	if (this->getGradeForExecution() < executor.getGrade())
+		return (false);
+	return (true);
+}
+
+/////////////// EXCEPTIONS FUNCTIONS ///////////////
+
 const char* Form::GradeTooHighException::what(void) const throw() 
 {
 	return ("Form::exception: Grade is to high.");
@@ -97,6 +110,13 @@ const char* Form::GradeTooLowException::what(void) const throw()
 {
 	return ("Form::exception: Grade is to low.");
 }
+
+const char* Form::IsNotSignedException::what(void) const throw() 
+{
+	return ("Form::exception: This form is not signed and can t be executed.");
+}
+
+/////////////// OPERATOR ///////////////
 
 std::ostream & operator<<(std::ostream &myOstream, const Form &myForm)
 {

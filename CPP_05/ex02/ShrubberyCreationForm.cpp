@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:20:26 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 19:04:23 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:49:06 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,12 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string myTarget) : Form("ShrubberyCreationForm", 145, 137, myTarget)
 {
-	std::string filename;
-	filename = myTarget + ".txt";
-	std::ofstream MyFile(filename);
-	MyFile << " TREE FOREST " << std::endl;
-	MyFile.close();
 	return ;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &myShrubbery) : Form(myShrubbery.getName(), myShrubbery.getGradeForSignature(), myShrubbery.getGradeForExecution(), myShrubbery.getTarget())
 {
-	std::string filename;
-	filename = myShrubbery.getTarget() + ".txt";
-	std::ofstream MyFile(filename);
-	MyFile << " TREE FOREST " << std::endl;
-	MyFile.close();
+	*this = myShrubbery;
 	return ;
 }
 
@@ -39,7 +30,19 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm	&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm & myShrubbery)
 {
-	if (this != &myShrubbery)
-		*this = myShrubbery;
 	return (*this);
+}
+
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+{
+	if (!this->getIsSigned())
+		throw(IsNotSignedException());
+	if (!this->bureaucratCanExecute(executor))
+		throw(GradeTooLowException());
+	std::string filename;
+	filename = this->getTarget() + ".txt";
+	std::ofstream MyFile(filename);
+	MyFile << " TREE FOREST " << std::endl;
+	MyFile.close();
+	return ;
 }
