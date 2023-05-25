@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:24 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 20:45:29 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:46:59 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@
 void	freeDocs(Form **docs)
 {
 	int	i = 0;
-	// int	size = (sizeof(docs) / sizeof(Form *));
+	// int j = 5;
+	// while (i < j)
+	// {	
+	// 	if (docs[i])
+	// 		std::cout << docs[i];
+	// 	i++;
+	// }
+	// i = 0;
+	int	size = (sizeof(docs) / sizeof(void *));
+	std::cout << "SIZE : " << size << std::endl;
 	int size = 5;
 	while (i < size)
 	{	

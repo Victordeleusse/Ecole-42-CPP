@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:31:24 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/11 17:49:50 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:47:10 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	i = 0;
 	while (this->learning_tab[i])
 		i++;
-	this->learning_tab[i] = m->clone();
+	this->learning_tab[i] = m;
 	this->nb_AMlearned++;
 	return ;
 }
