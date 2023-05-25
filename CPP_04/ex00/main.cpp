@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:03:39 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/16 19:00:34 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/25 09:54:38 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const Dog* k = new Dog();
+	const WrongAnimal *w = new WrongCat();
 	
 	std::cout << meta->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
@@ -35,6 +36,7 @@ int	main(void)
 	delete j;
 	delete i;
 	delete k;
+	delete w;
 
 	const Animal* wrong_meta = new WrongAnimal();
 	const WrongAnimal* c = new WrongCat();
