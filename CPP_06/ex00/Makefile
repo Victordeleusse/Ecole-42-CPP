@@ -1,4 +1,4 @@
-NAME = intern
+NAME = convert
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
