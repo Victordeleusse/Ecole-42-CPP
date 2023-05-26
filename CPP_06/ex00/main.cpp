@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 10:16:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/26 17:18:18 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/05/26 13:04:47 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/05/26 13:07:10 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <cctype>
-#include <typeinfo>
-
+#include "convert.hpp"
 
 int main(int argc, char **argv)
 {
-	std::string s = argv[1];
-	
-	if (s[s.length() - 1] == 'f')
-		s.erase(s.length() - 1);
-	std::cout << "output : " << s << std::endl;
-	return (0);	
+	if (argc != 2)
+	{
+		std::cerr << "Wrong use of the function" << std::endl;
+		return (-1);
+	}
+	ScalarConverter myScalar(argv[1]);
+	std::cout << "PARSING TYPE : " << myScalar.type << std::endl;
+	return (0);
 }
