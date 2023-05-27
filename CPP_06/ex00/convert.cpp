@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:55:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/26 20:09:08 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/27 14:43:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,11 @@ bool	ScalarConverter::isValid()
 	int	i = 0;
 	int	len = (int)(this->input.length());
 	int	count_point = 0;
-	if (len == 1 || (len == 3 && input[0] == '\'' && input[2] == '\''))
+	if (len == 3 && input[0] == '\'')
 	{
-		if ((len == 1 && std::isprint(input[0])) || (len == 3 && std::isprint(input[1])))
+		if (input[2] == '\'' &&  std::isprint(input[1]))
 		{
-			if (len == 3)
-				i = 1;
-			if ('0' <= input[i] && input[i] <= '9')
-				this->type = INT;
-			else
-				this->type = CHAR;
+			this->type = CHAR;
 			return (true);
 		}
 		else
@@ -170,8 +165,6 @@ void	ScalarConverter::convert()
 	else 
 	{
 		// conversion from stringstream and the try to get an int, float or double
-		this->isChar = false;
-		this->isPrintable = false;
 		
 		std::string data = this->input;
 		if (data[data.length() - 1] == 'f')
