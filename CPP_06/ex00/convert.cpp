@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:55:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/27 15:05:56 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:40:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,18 @@ ScalarConverter	& ScalarConverter::operator=(const ScalarConverter &myScalar)
 	if (this != &myScalar)
 	{	
 		this->input = myScalar.input;
+		this->type = myScalar.type;
+		this->dataValid = myScalar.dataValid;
+		this->isChar = myScalar.dataValid;
+		this->isPrintable = myScalar.isPrintable;
 		this->cRepresentation = myScalar.cRepresentation;
+		this->isInt = myScalar.isInt;
 		this->intRepresentation = myScalar.intRepresentation;
-		this->doubleRepresentation = myScalar.doubleRepresentation;
+		this->isFloat = myScalar.isFloat;
 		this->floatRepresentation = myScalar.floatRepresentation;
+		this->isDouble = myScalar.isDouble;
+		this->hasPoint = myScalar.hasPoint;
+		this->doubleRepresentation = myScalar.doubleRepresentation;
 	}
 	return (*this) ;
 }

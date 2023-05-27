@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:57:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/27 15:01:15 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:40:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,6 @@ class ScalarConverter
 		bool	isValid();
 		void	testLimits();
 		void	convert();
-
-		class UnexpectedDataException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
-
-		
 
 		std::string	input;
 		scalaireT	type;
