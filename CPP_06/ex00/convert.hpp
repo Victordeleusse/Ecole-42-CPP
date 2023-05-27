@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:57:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/26 18:43:54 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:01:15 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ class ScalarConverter
 		float		floatRepresentation;
 		
 		bool		isDouble;
+		bool		hasPoint;
 		double		doubleRepresentation;
 		
 };

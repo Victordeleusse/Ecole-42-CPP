@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:55:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/27 14:43:50 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:05:56 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ bool	ScalarConverter::isValid()
 		else
 			break;
 	}
+	this->hasPoint = false;
+	if (count_point)
+		this->hasPoint = true;	
 	if ((i != len && this->type == NONE) || count_point > 1)
 		return(this->dataValid = false, false);
 	if (this->type == NONE)
@@ -172,17 +175,22 @@ void	ScalarConverter::convert()
 		std::stringstream ss(data);
 
 		
-		ss >> this->cRepresentation;
-		if(ss.fail())
-			this->isPrintable = false;
-		else if (32 < this->cRepresentation && this->cRepresentation < 127)
-			this->isPrintable = true;
-		ss.clear();
-		ss.seekg(0);
-		
 		ss >> this->intRepresentation;
 		if (ss.fail())
 			this->isInt = false;
+		ss.clear();
+		ss.seekg(0);
+		
+		if (this->isInt == true && this->hasPoint == false)
+		{
+			this->cRepresentation = this->intRepresentation;
+			if (this->intRepresentation < 0 || this->intRepresentation > 127)
+				this->isChar = false;
+			else if (33 > this->intRepresentation || this->intRepresentation == 127)
+				this->isPrintable = false;
+		}
+		else
+			this->isChar = false;
 		ss.clear();
 		ss.seekg(0);
 		
@@ -225,12 +233,12 @@ std::ostream	&	operator<<(std::ostream &out, const ScalarConverter &myScalar)
 	{
 		// std::cerr << "is char ? !" << myScalar.isChar << std::endl;
 		// std::cerr << "is printable ? !" << myScalar.isPrintable << std::endl;
-		if (myScalar.isChar == true && myScalar.isPrintable == true)
-			out << "char : '" << static_cast<char>(myScalar) << "' "<< std::endl;
-		else if (myScalar.isChar == false && myScalar.isPrintable == true)
+		if (myScalar.isChar == false)
+			out << "char : impossible \n" ;
+		else if (myScalar.isChar == true && myScalar.isPrintable == false)
 			out << "char : Non displayable \n" ;
 		else
-			out << "char : impossible \n" ;
+			out << "char : '" << static_cast<char>(myScalar) << "' "<< std::endl;
 		if(myScalar.isInt == true)
 			out << "int : " << static_cast<int>(myScalar) << std::endl;
 		else
@@ -240,7 +248,12 @@ std::ostream	&	operator<<(std::ostream &out, const ScalarConverter &myScalar)
 		else
 			out << "float : impossible \n";
 		if(myScalar.isDouble == true)
-			out << "double : " << static_cast<double>(myScalar) << std::endl;
+		{
+			out << "double : " << static_cast<double>(myScalar);
+			if (!myScalar.hasPoint)
+				out << ".0";
+			out <<  std::endl;
+		}
 		else
 			out << "double : impossible \n";
 	}
