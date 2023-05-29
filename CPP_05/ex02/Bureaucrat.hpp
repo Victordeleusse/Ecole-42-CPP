@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:25:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/24 15:44:06 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:15:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Bureaucrat
 		void	upgradeBureaucrat(void);
 		void	downgradeBureaucrat(void);
 
+		void	signForm(Form &myForm);
 		void	executeForm(Form const & form);
 		
 		class	GradeTooHighException: public std::exception
