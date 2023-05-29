@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:27:29 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 16:05:33 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:10:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FORM_H
 
 # include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {

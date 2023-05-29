@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 17:35:11 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 15:34:56 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:08:49 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,15 @@ void	Bureaucrat::downgradeBureaucrat(void)
 		throw (GradeTooLowException());
 	this->grade++;
 	return ;
+}
+
+void	Bureaucrat::signForm(Form &myForm)
+{
+	if (myForm.getIsSigned())
+		std::cout << "This form is already signed" << std::endl;
+	else
+		myForm.beSigned(*this);
+	return;
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()

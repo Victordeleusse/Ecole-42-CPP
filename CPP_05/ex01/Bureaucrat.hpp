@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:25:41 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 15:35:05 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:08:40 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <string.h>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -31,6 +34,8 @@ class Bureaucrat
 	
 		void	upgradeBureaucrat(void);
 		void	downgradeBureaucrat(void);
+
+		void	signForm(Form &myForm);
 		
 		class	GradeTooHighException: public std::exception
 		{

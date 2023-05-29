@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:25:24 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/23 16:10:59 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:10:44 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(void)
 		
 		std::cout << std::endl;
 		std::cout << "----ACTIONS----\n";
+		Victor.signForm(Doc1);
 		Doc1.beSigned(Jeanne);
 		Doc2.beSigned(Victor);
 		Doc3.beSigned(Victor);
