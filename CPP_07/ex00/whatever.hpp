@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 13:04:47 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/07 17:41:18 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/06/06 22:50:37 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/06/07 16:48:15 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "convert.hpp"
+#ifndef WHATEVER_H
+# define WHATEVER_H
 
-int main(int argc, char **argv)
+# include <iostream>
+
+template < typename T >
+void	swap(T *a, T *b)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Wrong use of the function" << std::endl;
-		return (-1);
-	}
-	try
-	{
-		ScalarConverter myScalar(argv[1]);
-		std::cout << myScalar << std::endl;
-	}
-	catch( const std::exception& e ) 
-	{
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-	return (0);
+	T	temp;
+	
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
+
+template < typename T >
+const T &min(const T &a, const T &b)
+{
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+template < typename T >
+const T &max(const T &a, const T &b)
+{
+	if (a >= b)
+		return (a);
+	return (b);
+}
+
+#endif

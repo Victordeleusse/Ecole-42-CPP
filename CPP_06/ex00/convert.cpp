@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:55:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/27 15:40:36 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:49:04 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@ ScalarConverter::ScalarConverter(char *myInput)
 	this->dataValid = true;
 	this->type = NONE;
 	if (!this->isValid())
-		return ;
+	{	
+		throw(WrongInputException());
+		// return ;
+	}
 	if (this->type == PSEUDO_LITTERAL)
 		this->testLimits();
 	else
 		this->convert();
 	return ;
+}
+
+const char *ScalarConverter::WrongInputException::what(void) const throw()
+{
+	return ("Wrong input, please use : \n\t - litteral char ('a', 'c' ..)\n\t \
+	- int (0, 42, -42, ...) \n\t - float (0.0f, 42.0f) \n\t - double (0.0, 4.2) \n");
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &myScalar)
@@ -164,7 +173,6 @@ void	ScalarConverter::convert()
 	// From a char -> upgrade casting to int / double / float : no issue
 	if (this->type == CHAR)
 	{
-		std::cerr << "Bien un char !" << std::endl;
 		if (this->input.length() == 3)
 			this->cRepresentation = *(this->input.c_str() + 1);
 		else
@@ -175,7 +183,7 @@ void	ScalarConverter::convert()
 	}
 	else 
 	{
-		// conversion from stringstream and the try to get an int, float or double
+		// conversion from stringstream and then try to get an int, float or double
 		
 		std::string data = this->input;
 		if (data[data.length() - 1] == 'f')
@@ -189,7 +197,7 @@ void	ScalarConverter::convert()
 		ss.clear();
 		ss.seekg(0);
 		
-		if (this->isInt == true && this->hasPoint == false)
+		if (this->isInt == true)
 		{
 			this->cRepresentation = this->intRepresentation;
 			if (this->intRepresentation < 0 || this->intRepresentation > 127)
@@ -197,8 +205,6 @@ void	ScalarConverter::convert()
 			else if (33 > this->intRepresentation || this->intRepresentation == 127)
 				this->isPrintable = false;
 		}
-		else
-			this->isChar = false;
 		ss.clear();
 		ss.seekg(0);
 		
@@ -239,8 +245,6 @@ std::ostream	&	operator<<(std::ostream &out, const ScalarConverter &myScalar)
 		out << "INVALID DATA" << std::endl; 
 	else
 	{
-		// std::cerr << "is char ? !" << myScalar.isChar << std::endl;
-		// std::cerr << "is printable ? !" << myScalar.isPrintable << std::endl;
 		if (myScalar.isChar == false)
 			out << "char : impossible \n" ;
 		else if (myScalar.isChar == true && myScalar.isPrintable == false)
