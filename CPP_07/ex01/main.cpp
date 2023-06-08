@@ -5,25 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 16:48:25 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/08 13:56:11 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/06/08 14:25:35 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/06/08 15:14:50 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "iter.hpp"
 
-int main(void)
+int	main(void)
 {
-	int	a = 12;
-	int b = 35;
-
-	std::cout << "valeur de a : " << a << " || valeur de b : " << b << std::endl;
-	std::cout << "SWAP" <<std::endl;
-	swap(a, b);
-	std::cout << "valeur de a : " << a << " || valeur de b : " << b << std::endl;
-
-	std::cout << "calcul du min : " << min(a, b) << std::endl;
-	std::cout << "calcul du max : " << max(a, b) << std::endl;
-
+	size_t	i = 0;
+	int 	tab[5] = {1, 2, 3, 4, 5};
+	size_t	size = sizeof(tab) / sizeof(tab[0]);
+	
+	iter<int, void>(tab, size, &(ft_double));
+	while (i < size)
+		ft_print(tab[i++]);
 	return (0);
 }

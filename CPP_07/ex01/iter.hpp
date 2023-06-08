@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 22:50:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/08 13:55:02 by vde-leus         ###   ########.fr       */
+/*   Created: 2023/06/08 13:58:24 by vde-leus          #+#    #+#             */
+/*   Updated: 2023/06/08 15:14:26 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_H
-# define WHATEVER_H
+#ifndef ITER_H
+# define ITER_H
 
 # include <iostream>
 
-template < typename T >
-void	swap(T &a, T &b)
+template < typename T>
+void	ft_double(T &elem)
 {
-	T	temp;
-	
-	temp = a;
-	a = b;
-	b = temp;
+	elem = elem * 2;
 }
 
-template < typename T >
-const T &min(const T &a, const T &b)
+template < typename T, typename U >
+U	ft_decrement(T &a)
 {
-	if (a > b)
-		return (b);
+	a = static_cast<U>(a - 1);
 	return (a);
 }
 
 template < typename T >
-const T &max(const T &a, const T &b)
+void	ft_print(T &elem)
 {
-	if (a >= b)
-		return (a);
-	return (b);
+	std::cout << elem << std::endl;	
+}
+
+template <typename T, typename U>  
+void	iter(T *tab, size_t size, U (*function)(T &elem))
+{
+	size_t	i = 0;
+	
+	while (i < size)
+	{
+		(*function)(tab[i]);
+		i++;
+	}
 }
 
 #endif

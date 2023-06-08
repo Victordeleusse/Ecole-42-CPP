@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:57:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/07 17:31:06 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/08 11:46:02 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,52 +28,46 @@ enum scalaireT {
   PSEUDO_LITTERAL
 }; 
 
+typedef struct	s_data {
+	std::string	input;
+	scalaireT	type;	
+	bool		dataValid;
+	bool		isChar;
+	bool		isPrintable;
+	char		cRepresentation;
+	bool		isInt;
+	int			intRepresentation;
+	bool		isFloat;
+	float		floatRepresentation;
+	bool		isDouble;
+	bool		hasPoint;
+	double		doubleRepresentation;
+}	t_data;
+
 class ScalarConverter
 {
-	public :
-		
-		ScalarConverter(char *myInput);
+	private :
+	
+		ScalarConverter();
 		ScalarConverter(const ScalarConverter &myScalar);
-		~ScalarConverter();
-
 		ScalarConverter	&	operator=(const ScalarConverter &myScalar);
-		
-		operator char() const;
-		operator int() const;
-		operator float() const;
-		operator double() const;
-
-		bool	isValid();
-		void	testLimits();
-		void	convert();
-
+		~ScalarConverter();
+	
+		static bool	isValid(t_data *data);
+		static void	testLimits(t_data *data);
+		static void	printRes(t_data *data);
+	
 		class	WrongInputException: public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
 	
-		std::string	input;
-		scalaireT	type;
+		static t_data	data;
 		
-		bool		dataValid;
-		
-		bool		isChar;
-		bool		isPrintable;
-		char		cRepresentation;
-		
-		bool		isInt;
-		int			intRepresentation;
-		
-		bool		isFloat;
-		float		floatRepresentation;
-		
-		bool		isDouble;
-		bool		hasPoint;
-		double		doubleRepresentation;
-		
-};
+	public :
 
-std::ostream	&	operator<<(std::ostream &o, const ScalarConverter &myScalar);
+		static void	convert(char *myInput);
+};
 
 #endif

@@ -6,35 +6,13 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 09:55:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/07 17:49:04 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:57:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "convert.hpp"
 
-ScalarConverter::ScalarConverter(char *myInput)
-{
-	std::string	s = myInput;
-	this->input = s;
-	this->dataValid = true;
-	this->type = NONE;
-	if (!this->isValid())
-	{	
-		throw(WrongInputException());
-		// return ;
-	}
-	if (this->type == PSEUDO_LITTERAL)
-		this->testLimits();
-	else
-		this->convert();
-	return ;
-}
-
-const char *ScalarConverter::WrongInputException::what(void) const throw()
-{
-	return ("Wrong input, please use : \n\t - litteral char ('a', 'c' ..)\n\t \
-	- int (0, 42, -42, ...) \n\t - float (0.0f, 42.0f) \n\t - double (0.0, 4.2) \n");
-}
+ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &myScalar)
 {
@@ -42,75 +20,63 @@ ScalarConverter::ScalarConverter(const ScalarConverter &myScalar)
 	return ;
 }
 
-ScalarConverter::~ScalarConverter(void)
-{
-	return ;
-}
+ScalarConverter::~ScalarConverter() {}
 
 ScalarConverter	& ScalarConverter::operator=(const ScalarConverter &myScalar)
 {
-	if (this != &myScalar)
-	{	
-		this->input = myScalar.input;
-		this->type = myScalar.type;
-		this->dataValid = myScalar.dataValid;
-		this->isChar = myScalar.dataValid;
-		this->isPrintable = myScalar.isPrintable;
-		this->cRepresentation = myScalar.cRepresentation;
-		this->isInt = myScalar.isInt;
-		this->intRepresentation = myScalar.intRepresentation;
-		this->isFloat = myScalar.isFloat;
-		this->floatRepresentation = myScalar.floatRepresentation;
-		this->isDouble = myScalar.isDouble;
-		this->hasPoint = myScalar.hasPoint;
-		this->doubleRepresentation = myScalar.doubleRepresentation;
-	}
+	(void)myScalar;
 	return (*this) ;
 }
 
-bool	ScalarConverter::isValid()
+const char *ScalarConverter::WrongInputException::what() const throw()
 {
-	if (!input.compare("nan") || !input.compare("nanf") || !input.compare("-inf") \
-		|| !input.compare("inf") || !input.compare("-inff") || !input.compare("inff"))
+	return ("Wrong input, please use : \n\t - litteral char ('a', 'c' ..)\
+	\n\t - int (0, 42, -42, ...) \n\t - float (0.0f, 42.0f) \n\t - double (0.0, 4.2) \n");
+}
+
+bool	ScalarConverter::isValid(t_data *data)
+{
+	if (!data->input.compare("nan") || !data->input.compare("nanf") || !data->input.compare("-inf") \
+		|| !data->input.compare("inf") || !data->input.compare("-inff") || !data->input.compare("inff"))
 	{
-		this->type = PSEUDO_LITTERAL;
+		data->type = PSEUDO_LITTERAL;
 		return (true);
 	}
 	int	i = 0;
-	int	len = (int)(this->input.length());
+	int	len = (int)(data->input.length());
 	int	count_point = 0;
-	if (len == 3 && input[0] == '\'')
+	if (len == 3 && data->input[0] == '\'')
 	{
-		if (input[2] == '\'' &&  std::isprint(input[1]))
+		if (data->input[2] == '\'' &&  std::isprint(data->input[1]))
 		{
-			this->type = CHAR;
+			data->type = CHAR;
 			return (true);
 		}
 		else
 			return (false);
 	}
-	if (input[i] == '+' || input[i] == '-')
+	if (data->input[i] == '+' || data->input[i] == '-')
 		i++;
 	while (i < len)
 	{
-		while ('0' <= input[i] && input[i] <= '9')
+		while ('0' <= data->input[i] && data->input[i] <= '9')
 			i++;
-		if (input[i] == '.')
+		if (data->input[i] == '.')
 		{
 			count_point++;
-			if (input[i + 1] && '0' <= input[i + 1] && input[i + 1] <= '9' && count_point == 1 && i != 0)
+			if (data->input[i + 1] && '0' <= data->input[i + 1] && data->input[i + 1] <= '9' && count_point == 1 && i != 0)
 			{
 				i++;
-				this->type = DOUBLE;
+				data->type = DOUBLE;
 			}
 			else 
 				break;
 		}
-		else if (input[i] == 'f' && i != 0)
+		else if (data->input[i] == 'f' && i != 0)
 		{
-			if (!input[i + 1] && '0' <= input[i - 1] && input[i - 1] <= '9')
+			if (!data->input[i + 1] && '0' <= data->input[i - 1] && data->input[i - 1] <= '9')
 			{
-				this->type = FLOAT;
+				data->type = FLOAT;
 				break;				
 			}
 			else
@@ -119,156 +85,149 @@ bool	ScalarConverter::isValid()
 		else
 			break;
 	}
-	this->hasPoint = false;
+	data->hasPoint = false;
 	if (count_point)
-		this->hasPoint = true;	
-	if ((i != len && this->type == NONE) || count_point > 1)
-		return(this->dataValid = false, false);
-	if (this->type == NONE)
-		this->type = INT;
+		data->hasPoint = true;	
+	if ((i != len && data->type == NONE) || count_point > 1)
+		return(data->dataValid = false, false);
+	if (data->type == NONE)
+		data->type = INT;
 	return (true);
 }
 
-void	ScalarConverter::testLimits()
+void	ScalarConverter::testLimits(t_data *data)
 {
-	isChar = false;
-	isPrintable = false;
-	isInt = false;
-	isDouble = false;
-	isFloat = false;
-	if (!input.compare("nan") || !input.compare("nanf"))
+	if (!data->input.compare("nan") || !data->input.compare("nanf"))
 	{
-		isDouble = true;
-		doubleRepresentation = NAN;
-		isFloat = true;
-		floatRepresentation = NAN;
+		data->isDouble = true;
+		data->doubleRepresentation = NAN;
+		data->isFloat = true;
+		data->floatRepresentation = NAN;
 		return ;
 	}
-	else if (!input.compare("-inf") || !input.compare("-inff"))
+	else if (!data->input.compare("-inf") || !data->input.compare("-inff"))
 	{
-		isDouble = true;
-		doubleRepresentation = -1 * std::numeric_limits<double>::infinity();
-		isFloat = true;
-		floatRepresentation =  -1 * std::numeric_limits<float>::infinity();;
+		data->isDouble = true;
+		data->doubleRepresentation = -1 * std::numeric_limits<double>::infinity();
+		data->isFloat = true;
+		data->floatRepresentation =  -1 * std::numeric_limits<float>::infinity();;
 		return ;
 	}
-	else if (!input.compare("inf") || !input.compare("inff"))
+	else if (!data->input.compare("inf") || !data->input.compare("inff"))
 	{
-		isDouble = true;
-		doubleRepresentation = std::numeric_limits<double>::infinity();
-		isFloat = true;
-		floatRepresentation = std::numeric_limits<float>::infinity();;
+		data->isDouble = true;
+		data->doubleRepresentation = std::numeric_limits<double>::infinity();
+		data->isFloat = true;
+		data->floatRepresentation = std::numeric_limits<float>::infinity();;
 		return ;
 	}
 }
 
-void	ScalarConverter::convert()
+void	ScalarConverter::convert(char *myInput)
 {
-	this->isChar = true;
-	this->isPrintable = true;
-	this->isInt = true;
-	this->isDouble = true;
-	this->isFloat = true;
+	t_data	data;
+
+	data.isChar = true;
+	data.isPrintable = true;
+	data.isInt = true;
+	data.isDouble = true;
+	data.isFloat = true;
+	data.dataValid = true;
+	data.type = NONE;
 	
-	// From a char -> upgrade casting to int / double / float : no issue
-	if (this->type == CHAR)
-	{
-		if (this->input.length() == 3)
-			this->cRepresentation = *(this->input.c_str() + 1);
-		else
-			this->cRepresentation = *(this->input.c_str());
-		this->intRepresentation = this->cRepresentation;
-		this->floatRepresentation = this->cRepresentation;
-		this->doubleRepresentation = this->cRepresentation;
-	}
+	data.input = myInput;
+	if (!isValid(&data))
+		throw(WrongInputException());
+	if (data.type == PSEUDO_LITTERAL)
+		testLimits(&data);
 	else 
 	{
-		// conversion from stringstream and then try to get an int, float or double
-		
-		std::string data = this->input;
-		if (data[data.length() - 1] == 'f')
-			data.erase(data.length() - 1);
-		std::stringstream ss(data);
-
-		
-		ss >> this->intRepresentation;
-		if (ss.fail())
-			this->isInt = false;
-		ss.clear();
-		ss.seekg(0);
-		
-		if (this->isInt == true)
+		// From a chara. upgrade casting to int / double / float : no issue
+		if (data.type == CHAR)
 		{
-			this->cRepresentation = this->intRepresentation;
-			if (this->intRepresentation < 0 || this->intRepresentation > 127)
-				this->isChar = false;
-			else if (33 > this->intRepresentation || this->intRepresentation == 127)
-				this->isPrintable = false;
+			if (data.input.length() == 3)
+				data.cRepresentation = *(data.input.c_str() + 1);
+			else
+				data.cRepresentation = *(data.input.c_str());
+			if (isprint(data.cRepresentation))
+			{	
+				std::cout << "TYPE : " << data.cRepresentation << std::endl;
+				data.isPrintable = true;
+				data.intRepresentation = data.cRepresentation;
+				data.floatRepresentation = data.cRepresentation;
+				data.doubleRepresentation = data.cRepresentation;
+			}
 		}
-		ss.clear();
-		ss.seekg(0);
-		
-		ss >> this->floatRepresentation;
-		if (ss.fail())
-			this->isFloat = false;
-		ss.clear();
-		ss.seekg(0);
-		
-		ss >> this->doubleRepresentation;
-		if (ss.fail())
-			this->isDouble = false;
-		ss.clear();
-		ss.seekg(0);
+		else 
+		{
+			// conversion from stringstream and then try to get an int, float or double
+			std::string str = data.input;
+			if (str[str.length() - 1] == 'f')
+				str.erase(str.length() - 1);
+			std::stringstream ss(str);
+			
+			ss >> data.intRepresentation;
+			if (ss.fail())
+				data.isInt = false;
+			ss.clear();
+			ss.seekg(0);
+			
+			if (data.isInt == true)
+			{
+				data.cRepresentation = data.intRepresentation;
+				if (data.intRepresentation < 0 || data.intRepresentation > 127)
+					data.isChar = false;
+				else if (33 > data.intRepresentation || data.intRepresentation == 127)
+					data.isPrintable = false;
+			}
+			ss.clear();
+			ss.seekg(0);
+			
+			ss >> data.floatRepresentation;
+			if (ss.fail())
+				data.isFloat = false;
+			ss.clear();
+			ss.seekg(0);
+			
+			ss >> data.doubleRepresentation;
+			if (ss.fail())
+				data.isDouble = false;
+			ss.clear();
+			ss.seekg(0);
+		}
 	}
+	printRes(&data);
 }
 
-ScalarConverter::operator char() const {
-	return(this->cRepresentation);	
-}
-
-ScalarConverter::operator int() const {
-	return(this->intRepresentation);	
-}
-
-ScalarConverter::operator float() const {
-	return(this->floatRepresentation);	
-}
-
-ScalarConverter::operator double() const {
-	return(this->doubleRepresentation);	
-}
-
-std::ostream	&	operator<<(std::ostream &out, const ScalarConverter &myScalar)
+void	ScalarConverter::printRes(t_data *data)
 {
-	out << "./convert " << myScalar.input << " : \n" << std::endl;
-	if (!myScalar.dataValid)
-		out << "INVALID DATA" << std::endl; 
-	else
+	std::cout << "./convert " << data->input << " : \n" << std::endl;
+	if (!data->dataValid)
+		std::cerr << "INVALID DATA" << std::endl;
+	else 
 	{
-		if (myScalar.isChar == false)
-			out << "char : impossible \n" ;
-		else if (myScalar.isChar == true && myScalar.isPrintable == false)
-			out << "char : Non displayable \n" ;
+		if (data->isChar == false)
+			std::cout << "char : impossible \n" ;
+		else if (data->isChar == true && data->isPrintable == false)
+			std::cout << "char : Non displayable \n" ;
 		else
-			out << "char : '" << static_cast<char>(myScalar) << "' "<< std::endl;
-		if(myScalar.isInt == true)
-			out << "int : " << static_cast<int>(myScalar) << std::endl;
+			std::cout << "char : '" << static_cast<char>(data->cRepresentation) << "' "<< std::endl;
+		if(data->isInt == true)
+			std::cout << "int : " << static_cast<int>(data->intRepresentation) << std::endl;
 		else
-			out << "int : impossible \n";
-		if(myScalar.isFloat == true)
-			out << "float : " << static_cast<float>(myScalar) << "f" << std::endl;
+			std::cout << "int : impossible \n";
+		if(data->isFloat == true)
+			std::cout << "float : " << static_cast<float>(data->floatRepresentation) << "f" << std::endl;
 		else
-			out << "float : impossible \n";
-		if(myScalar.isDouble == true)
+			std::cout << "float : impossible \n";
+		if(data->isDouble == true)
 		{
-			out << "double : " << static_cast<double>(myScalar);
-			if (!myScalar.hasPoint)
-				out << ".0";
-			out <<  std::endl;
+			std::cout << "double : " << static_cast<double>(data->doubleRepresentation);
+			if (!data->hasPoint)
+				std::cout << ".0";
+			std::cout <<  std::endl;
 		}
 		else
-			out << "double : impossible \n";
+			std::cout << "double : impossible \n";	
 	}
-	return (out);	
 }
-
