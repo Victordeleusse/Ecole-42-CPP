@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:29:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/09 09:12:52 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:22:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ class Array
 		
 		Array	& operator=(const Array &myArray);
 		T		& operator[](size_t i);
+		const T	& operator[](size_t i) const;
+
 		
-		unsigned int	size() const;
+		size_t	size() const;
 
 		class outOfRangeIndexException : public std::exception
 		{
@@ -36,9 +38,9 @@ class Array
 		} ;
 		
 	private :
-		T				*data;
-		unsigned int	sizeData;
-
+		
+		size_t	sizeData;
+		T		*data;
 };
 
 template < typename T>

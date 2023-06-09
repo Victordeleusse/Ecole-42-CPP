@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:09:40 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/09 09:25:42 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:26:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,22 @@ Array<T>::Array() : sizeData(0)
 }
 
 template < typename T >
-Array<T>::Array(unsigned int n) : sizeData(n)
+Array<T>::Array(unsigned int n)
 {
-	this->data = new T[this->sizeData * T()];
+	if (static_cast<int>(n) < 0)
+		throw(outOfRangeIndexException());
+	else 
+	{
+		this->sizeData = n;
+		this->data = new T[n];
+	}	
 	return ;	
 }
 
 template < typename T >
-Array<T>::Array(const Array<T> &myArray)
+Array<T>::Array(const Array<T> &myArray): sizeData(0)
 {
+	this->data = new T[0];
 	*this = myArray;
 	return ;
 }
@@ -40,11 +47,27 @@ Array<T>::~Array()
 }
 
 template < typename T >
-unsigned int	Array<T>::size() const
+size_t	Array<T>::size() const
 {
 	if (!this->data)
 		return (0);
-	return (this->sizeData)
+	return (this->sizeData);
+}
+
+template < typename T >
+T	& Array<T>::operator[](size_t i)
+{
+	if (this->data && i < this->sizeData)
+		return (this->data[i]);
+	throw(outOfRangeIndexException());
+}
+
+template < typename T >
+const T	& Array<T>::operator[](size_t i) const
+{
+	if (this->data && i < this->sizeData)
+		return (this->data[i]);
+	throw(outOfRangeIndexException());
 }
 
 template < typename T >
@@ -64,32 +87,28 @@ Array<T>	& Array<T>::operator=(const Array<T> &myArray)
 		this->data[i] = myArray[i];
 		i++;
 	}
-	this->sizeData = original_size;
+	this->sizeData = originalSize;
 	return (*this);
 }
 
 template < typename T >
-T	& Array<T>::operator[](size_t i)
+const char *Array<T>::outOfRangeIndexException::what(void) const throw()
 {
-	if (this->data[i])
-		return (this->data[i]);
-	throw(outOfRangeIndexException());
+	return ("Index out of range");
 }
 
 template < typename T >
 std::ostream& operator<<(std::ostream &out, const Array<T> &myArray)
 {
 	unsigned int	i = 0;
+	unsigned int	size = myArray.size();
 	
-	if (!myArray.data || !myArray.sizeData)
+	if (!size)
 		out << "Empty array" << std::endl;
 	else
 	{
-		while (i < myArray.sizeData)
-		{
-			out << myArray.data[i] << std::endl;
-			i++;
-		}
+		while (i < size)
+			out << myArray[i++] << " ";
 	}
 	return (out);
 }
