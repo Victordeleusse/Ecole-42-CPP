@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:09:40 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/09 12:26:12 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:31:02 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ Array<T>::Array() : sizeData(0)
 template < typename T >
 Array<T>::Array(unsigned int n)
 {
+	size_t	i = 0;
+	
 	if (static_cast<int>(n) < 0)
 		throw(outOfRangeIndexException());
 	else 
 	{
 		this->sizeData = n;
 		this->data = new T[n];
+		while (i < n)
+			this->data[i++] = T();
 	}	
 	return ;	
 }

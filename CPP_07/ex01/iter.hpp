@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:58:24 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/08 15:14:26 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:07:12 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_print(T &elem)
 	std::cout << elem << std::endl;	
 }
 
-template <typename T, typename U>  
+template <typename T, typename U>
 void	iter(T *tab, size_t size, U (*function)(T &elem))
 {
 	size_t	i = 0;
