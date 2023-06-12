@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:05:38 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/10 16:19:39 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:23:51 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <algorithm>
 # include <vector>
 # include <list>
+# include <stack>
 
 class ElementNotFoundException : public std::exception
 {
@@ -25,21 +26,17 @@ class ElementNotFoundException : public std::exception
 };
 
 template <typename T>
-void	easyFind(T myContainer, int toFind)
-{
-	size_t	pos = 0;
+typename T::iterator	easyFind(T &myContainer, int toFind)
+{	
+	typename T::iterator	pos;
 	
-	for(typename T::iterator it = myContainer.begin(); it != myContainer.end(); it++)
-	{
-		pos++;
-		if (*it == toFind)
-		{	
-			std::cout << "Element found in position : " << pos << std::endl;
-			return ; 
-		}
+	pos = std::find(myContainer.begin(), myContainer.end(), toFind);
+	if (pos != myContainer.end())
+	{	
+		std::cout << "Element well found \n";
+		return (pos);
 	}
 	throw(ElementNotFoundException());
-	return ;
 }
 
 #endif
