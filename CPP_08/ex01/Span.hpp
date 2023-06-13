@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:37:44 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/13 12:01:36 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:56:23 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
+# include <list>
+# include <limits>
+# include <ranges>
 
 template <typename T>
 class Span
@@ -29,9 +32,13 @@ class Span
 		const Span & operator=(const Span &mySpan);
 		const int & operator[](int i) const;
 		
-		void	addNumber(int myNumber);
-		int		getSize() const;
-		T		getData() const;
+		void			addNumber(int myNumber);
+		void			addRanges(T myRange);
+		unsigned int	getSize() const;
+		T				getData() const;
+
+		int	shortestSpan() const;
+		int	longestSpan() const;
 
 		class SizeException : public std::exception
 		{
@@ -44,12 +51,18 @@ class Span
 			public :
 				virtual const char *what() const throw() {return("Index out of range of the container");};		
 		};
+		
+		class SortSizeException : public std::exception
+		{
+			public :
+				virtual const char *what() const throw() {return("Not enough element to calculate such distance");};		
+		};
 	
 	private :
 		
 		Span();
 		
-		int	sizeN;
+		unsigned int	sizeN;
 		T	data;
 
 };
