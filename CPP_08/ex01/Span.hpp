@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:37:44 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/12 20:27:56 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:01:36 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Span
 		
 		void	addNumber(int myNumber);
 		int		getSize() const;
-		int		getNbElem() const;
 		T		getData() const;
 
 		class SizeException : public std::exception
@@ -51,7 +50,6 @@ class Span
 		Span();
 		
 		int	sizeN;
-		int	nbElem;
 		T	data;
 
 };
