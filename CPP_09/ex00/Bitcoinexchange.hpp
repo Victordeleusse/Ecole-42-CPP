@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/15 19:04:28 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:09:53 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,14 @@ class btc
 		void	fileDataMap();
 		// void	fileERMap();
 
-		class FileException : public std::exception {
+		class FileException1 : public std::exception {
 			public :
-				virtual const char *what() const throw() {return("An error as occured when opening file");};		
+				virtual const char *what() const throw() {return("1. An error as occured when opening file");};		
+		};
+
+		class FileException2 : public std::exception {
+			public :
+				virtual const char *what() const throw() {return("2. An error as occured when opening file");};		
 		};
 		
 		class DateException : public std::exception {

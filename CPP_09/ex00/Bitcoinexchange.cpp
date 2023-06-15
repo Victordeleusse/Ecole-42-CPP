@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:12 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/15 18:56:47 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:16:34 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,73 +44,93 @@ btc	& btc::operator=(const btc &myBtc)
 bool	btc::validateData()
 {
 	std::fstream	newfile;
+	bool			firstLine = true;
+	const char		*inputFile = this->inputFile.c_str();
 	
-	newfile.open(this->inputFile, std::ios::in);
+	newfile.open(inputFile, std::ios_base::in);
 	if (newfile.is_open())
 	{ 
 		std::string tp;
-		while (getline(newfile, tp))
+		while (std::getline(newfile, tp))
 		{
-			std::string date;
-			std::string amount;
-			int	pos = tp.find('|');
-			date = tp.substr(0, pos);
-			amount = tp.substr(pos + 1, tp.size() - pos);
-			if (validateCalendar(date) == false)
-				throw(DateException());
-			if (validateAmount(amount) ==  false)
-				throw(AmountException());
+			if (firstLine == false)
+			{
+				std::string date;
+				std::string amount;
+				int	pos = tp.find('|');
+				date = tp.substr(0, pos);
+				amount = tp.substr(pos + 1, tp.size() - pos);
+				if (validateCalendar(date) == false)
+					throw(DateException());
+				if (validateAmount(amount) ==  false)
+					throw(AmountException());
+			}
+			else
+				firstLine = false;
 		}
 		newfile.close();
 		return (true);
 	}
 	else 
-		throw(FileException());	
+		throw(FileException1());	
 }
 
 bool	btc::validateCalendar(std::string date)
 {
 	std::string	year;
+	int			yearI;
 	std::string	month;
+	int			monthI;
 	std::string	day;
+	int			dayI;
 	int			pos1 = 0;
 	
 	pos1 = date.find('-');
-	if (pos1 == std::string::npos)
-		return (false);		
+	if (pos1 < 0)
+		return (false);	
+			
 	year = date.substr(0, pos1);
-	if (year.size() != 4)
-		return (false);
-	if (stoi(year) < 2000 || stoi(year) > 2500)
+	std::stringstream	ssY(year);
+	ssY >> yearI;
+	if (ssY.fail())
+		return(false) ;
+	if (yearI < 2000 || yearI > 2500)
 		return (false);			
+	
 	int	pos2 = date.substr(year.size(), date.size() - year.size()).find('-');
-	if (pos2 == std::string::npos)
-		return (false);		
+	if (pos2 < 0)
+		return (false);
+			
 	month = date.substr(pos1 + 1, pos2 - pos1);
+	std::stringstream	ssM(month);
+	ssM >> monthI;
+	if (ssM.fail())
+		return(false) ;
+	if (monthI < 0 || monthI > 12)
+		return (false);	
+	
 	day = date.substr(pos2 + 1, date.size() - pos2);
-	if (month.size() != 2)
-		return (false);
-	if (stoi(month) < 0 || stoi(month) > 12)
-		return (false);	
-	if (day.size() != 2)
-		return (false);
-	if (stoi(day) < 0 || stoi(day) > 12)
-		return (false);	
+	std::stringstream	ssD(day);
+	ssD >> dayI;
+	if (ssD.fail())
+		return(false) ;
+	if (dayI < 0 || dayI > 31)
+		return (false);		
 	return (true);
 }
 
 bool	btc::validateAmount(std::string amount)
 {
 	std::stringstream	ss(amount);
-	float				amountE;
+	float				amountF;
 	
-	ss >> amountE;
+	ss >> amountF;
 	if (ss.fail())
 		return(false) ;
 	ss.clear();
 	ss.seekg(0);
 
-	if (amountE < 0 || amountE > 1000)
+	if (amountF < 0 || amountF > 1000)
 		return (false);
 	return (true);
 }
@@ -118,22 +138,32 @@ bool	btc::validateAmount(std::string amount)
 void	btc::fileDataMap()
 {
 	std::fstream	newfile;
+	const char		*inputFile = this->inputFile.c_str();
 	
-	newfile.open(this->inputFile, std::ios::in);
+	newfile.open(inputFile, std::ios_base::in);
 	if (newfile.is_open())
 	{ 
 		std::string tp;
-		while (getline(newfile, tp))
+		while (std::getline(newfile, tp))
 		{
 			std::string date;
 			std::string amount;
+			float		amountF;
 			int	pos = tp.find('|');
+			if (pos < 0)
+				throw(AmountException());	
 			date = tp.substr(0, pos);
 			amount = tp.substr(pos + 1, tp.size() - pos);
-			this->data[date] = stof(amount);
+			std::stringstream	ss(amount);
+			ss >> amountF;
+			if (ss.fail())
+				throw(AmountException());
+			ss.clear();
+			ss.seekg(0);
+			this->data[date] = amountF;
 		}
 		newfile.close();
 	}
 	else 
-		throw(FileException());	
+		throw(FileException2());	
 }
