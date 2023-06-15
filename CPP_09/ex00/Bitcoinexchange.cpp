@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:12 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/15 20:16:34 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:28:44 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ btc	& btc::operator=(const btc &myBtc)
 
 bool	btc::validateData()
 {
-	std::fstream	newfile;
 	bool			firstLine = true;
-	const char		*inputFile = this->inputFile.c_str();
+	std::ifstream	newfile(this->inputFile.c_str());
 	
-	newfile.open(inputFile, std::ios_base::in);
 	if (newfile.is_open())
-	{ 
+	{
 		std::string tp;
 		while (std::getline(newfile, tp))
 		{
@@ -57,7 +55,9 @@ bool	btc::validateData()
 			{
 				std::string date;
 				std::string amount;
-				int	pos = tp.find('|');
+				std::string::size_type pos = tp.find('|');
+				if (pos == std::string::npos)
+					throw(FormatException());	
 				date = tp.substr(0, pos);
 				amount = tp.substr(pos + 1, tp.size() - pos);
 				if (validateCalendar(date) == false)
@@ -85,8 +85,8 @@ bool	btc::validateCalendar(std::string date)
 	int			dayI;
 	int			pos1 = 0;
 	
-	pos1 = date.find('-');
-	if (pos1 < 0)
+	std::string::size_type pos1 = date.find('-');
+	if (pos1 == std::string::npos)
 		return (false);	
 			
 	year = date.substr(0, pos1);
@@ -97,8 +97,8 @@ bool	btc::validateCalendar(std::string date)
 	if (yearI < 2000 || yearI > 2500)
 		return (false);			
 	
-	int	pos2 = date.substr(year.size(), date.size() - year.size()).find('-');
-	if (pos2 < 0)
+	std::string::size_type	pos2 = date.substr(year.size(), date.size() - year.size()).find('-');
+	if (pos2 == std::string::npos)
 		return (false);
 			
 	month = date.substr(pos1 + 1, pos2 - pos1);
@@ -137,10 +137,8 @@ bool	btc::validateAmount(std::string amount)
 
 void	btc::fileDataMap()
 {
-	std::fstream	newfile;
-	const char		*inputFile = this->inputFile.c_str();
+	std::ifstream	newfile(this->inputFile.c_str());
 	
-	newfile.open(inputFile, std::ios_base::in);
 	if (newfile.is_open())
 	{ 
 		std::string tp;
@@ -150,8 +148,6 @@ void	btc::fileDataMap()
 			std::string amount;
 			float		amountF;
 			int	pos = tp.find('|');
-			if (pos < 0)
-				throw(AmountException());	
 			date = tp.substr(0, pos);
 			amount = tp.substr(pos + 1, tp.size() - pos);
 			std::stringstream	ss(amount);
@@ -165,5 +161,5 @@ void	btc::fileDataMap()
 		newfile.close();
 	}
 	else 
-		throw(FileException2());	
+		throw(FileException1());	
 }

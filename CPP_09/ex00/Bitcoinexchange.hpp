@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/15 20:09:53 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:26:07 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ class btc
 				virtual const char *what() const throw() {return("1. An error as occured when opening file");};		
 		};
 
-		class FileException2 : public std::exception {
+		class FormatException : public std::exception {
 			public :
-				virtual const char *what() const throw() {return("2. An error as occured when opening file");};		
+				virtual const char *what() const throw() {return("Invalid format ! (please use format YYYY-MM-DD | amount)");};		
 		};
 		
 		class DateException : public std::exception {
