@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:12 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 16:54:04 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:13:22 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,8 @@ void	btc::displayValues()
 	std::string		file = this->getInputFile();
 	std::ifstream	newfile(file.c_str());
 	
+	if (this->validateData(this->getExchangeRateFile()))
+			this->fileERMap();
 	if (newfile.is_open())
 	{
 		std::string tp;

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 16:10:16 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:12:25 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class btc
 
 		void	fileERMap();
 
-		void	displayValues();
 		float	getExchangeRate(std::string date);
+		void	displayValues();
 
 		class FileException1 : public std::exception {
 			public :

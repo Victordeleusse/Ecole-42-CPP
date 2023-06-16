@@ -35,6 +35,7 @@ ${NAME} : ${OBJS}
 
 clean : 
 	@ ${RM} ${OBJS}
+	@ ${RM} data.txt
 	clear
 
 fclean : clean
