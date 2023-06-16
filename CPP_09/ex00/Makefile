@@ -35,8 +35,6 @@ ${NAME} : ${OBJS}
 
 clean : 
 	@ ${RM} ${OBJS}
-	@ ${RM} *replace
-	@ ${RM} *.txt
 	clear
 
 fclean : clean
