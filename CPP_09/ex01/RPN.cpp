@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 18:04:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 18:57:44 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 19:00:35 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 // Si c est un unsigned int compris entre 0 et 10
 // Pas de symbole autre que +-/*
 // Gestion des espaces ... on peut mettre 15 espaces d affiles pas de probleme 
-// def un bool pour s assurer de l alternance ?? 
+// Par bloc de 2 jusqu a != begin () -> un int un char et basta -> le dernier devra etre un int
+
 
 
 RPN::RPN(std::string input)
