@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:12 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 14:44:25 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:58:55 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 btc::btc(const std::string inputfile) : inputFile(inputfile) {
 	
 	this->exchangeRateFile = "data.txt";
-	std::ofstream outfile (this->exchangeRateFile.c_str(), std::ios::in);
+	std::ofstream outfile (this->exchangeRateFile.c_str());
 	
 	std::fstream fin;
 	fin.open("data.csv", std::ios::in);
@@ -35,9 +35,6 @@ btc::btc(const std::string inputfile) : inputFile(inputfile) {
 			outfile << " | ";
 			amount = line.substr(pos + 1, line.size());
 			outfile << amount << std::endl;
-			line.clear();
-			date.clear();
-			amount.clear();
 		}
 		outfile.close();
 	}
@@ -62,7 +59,7 @@ std::string	btc::getExchangeRateFile(void) const {
 	return (this->exchangeRateFile);
 }
 
-std::map<std::string, float>	btc::getData() const {
+std::map<std::string, float>	btc::getExchangeData() const {
 	return (this->exchangeRate);
 }
 
@@ -70,7 +67,7 @@ btc	& btc::operator=(const btc &myBtc)
 {
 	if (this == &myBtc)
 		return (*this);
-	this->exchangeRate = myBtc.getData();
+	this->exchangeRate = myBtc.getExchangeData();
 	return (*this);
 }
 
@@ -211,11 +208,49 @@ void	btc::fileERMap()
 				std::stringstream	ss(amount);
 				ss >> amountF;
 				this->exchangeRate[date] = amountF;
-				std::cout << date << " -> " << this->exchangeRate[date] << std::endl;
 			}
 		}
 		newfile.close();
 	}
 	else 
 		throw(FileException1());	
+}
+
+void	btc::displayValues()
+{
+	bool			firstLine = true;
+	std::string		file = this->getInputFile();
+	std::ifstream	newfile(file.c_str());
+	
+	if (newfile.is_open())
+	{
+		std::string tp;
+		while (std::getline(newfile, tp))
+		{
+			if (firstLine == false)
+			{
+				std::string date;
+				std::string::size_type pos = tp.find('|');
+				date = tp.substr(0, pos);
+				float exchangeRate = getExchangeRate(date);
+				std::string amount;
+				float		amountF;
+				amount = tp.substr(pos + 1, tp.size() - pos);
+				std::stringstream	ss(amount);
+				ss >> amountF;
+				std::cout << date << " -> " << amountF * exchangeRate << std::endl;
+			}
+			else 
+				firstLine = false;
+		}
+	}
+	
+}
+
+float	btc::getExchangeRate(std::string date)
+{
+	std::map<std::string ,float>::iterator itlow = this->exchangeRate.lower_bound(date);
+	if (itlow == this->exchangeRate.end())
+		itlow--;
+	return (itlow->second);
 }

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 14:44:43 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:59:21 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,17 @@ class btc
 
 		std::string						getInputFile() const;
 		std::string						getExchangeRateFile() const;
-
-		std::map<std::string, float>	getData() const;
+		std::map<std::string, float>	getExchangeData() const;
 
 		bool	validateData(std::string file);
 		bool	validateCalendar(std::string date);
 		bool	validateAmount(std::string amount);
 		bool	validateExchangeAmount(std::string amount);
 
-		// void	fileDataMap();
 		void	fileERMap();
+
+		void	displayValues();
+		float	getExchangeRate(std::string date);
 
 		class FileException1 : public std::exception {
 			public :
@@ -75,7 +76,6 @@ class btc
 		const std::string				inputFile;
 		std::string						exchangeRateFile;
 		std::map<std::string, float> 	exchangeRate;
-		// std::map<std::string, float> 	data;
 		
 };
 
