@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 15:59:21 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:10:16 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class btc
 
 		bool	validateData(std::string file);
 		bool	validateCalendar(std::string date);
-		bool	validateAmount(std::string amount);
+		void	validateAmount(std::string amount, bool &validLine);
 		bool	validateExchangeAmount(std::string amount);
 
 		void	fileERMap();

@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:43:12 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 15:58:55 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:54:04 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,8 @@ bool	btc::validateData(std::string file)
 				amount = tp.substr(pos + 1, tp.size() - pos);
 				if (validateCalendar(date) == false)
 					throw(DateException());
-				if (strcmp(file.c_str(), "myData.txt") == 0)
-				{
-					if (validateAmount(amount) ==  false)
-						throw(AmountException());
-				}
-				else if (strcmp(file.c_str(), "data.txt") == 0)
-				{
-					if (validateExchangeAmount(amount) ==  false)
-						throw(AmountException());
-				}
+				if (validateExchangeAmount(amount) ==  false)
+					throw(AmountException());
 			}
 			else
 				firstLine = false;
@@ -156,20 +148,28 @@ bool	btc::validateCalendar(std::string date)
 	return (true);
 }
 
-bool	btc::validateAmount(std::string amount)
+void	btc::validateAmount(std::string amount, bool &validLine)
 {
 	std::stringstream	ss(amount);
 	float				amountF;
 	
 	ss >> amountF;
 	if (ss.fail())
-		return(false) ;
-	ss.clear();
-	ss.seekg(0);
-
-	if (amountF < 0 || amountF > 1000)
-		return (false);
-	return (true);
+	{	
+		std::cout << "Error : Wrong amount type" << std::endl;
+		validLine = false;
+		return;
+	}
+	if (amountF < 0)
+	{	
+		std::cout << "Error : not a positive number" << std::endl;
+		validLine = false;
+	}
+	else if (amountF > 1000)
+	{
+		std::cout << "Error : amount too large" << std::endl;
+		validLine = false;
+	}
 }
 
 bool	btc::validateExchangeAmount(std::string amount)
@@ -219,6 +219,7 @@ void	btc::fileERMap()
 void	btc::displayValues()
 {
 	bool			firstLine = true;
+	bool			validLine = true;
 	std::string		file = this->getInputFile();
 	std::ifstream	newfile(file.c_str());
 	
@@ -231,14 +232,29 @@ void	btc::displayValues()
 			{
 				std::string date;
 				std::string::size_type pos = tp.find('|');
-				date = tp.substr(0, pos);
-				float exchangeRate = getExchangeRate(date);
-				std::string amount;
-				float		amountF;
-				amount = tp.substr(pos + 1, tp.size() - pos);
-				std::stringstream	ss(amount);
-				ss >> amountF;
-				std::cout << date << " -> " << amountF * exchangeRate << std::endl;
+				if (pos == std::string::npos)
+					std::cout << "Error : Wrong input format : YYYY-MM-DD | amount -> " << tp << std::endl;
+				else
+				{
+					date = tp.substr(0, pos);
+					if (validateCalendar(date) == true)
+					{
+						float exchangeRate = getExchangeRate(date);
+						std::string amount;
+						float		amountF;
+						amount = tp.substr(pos + 1, tp.size() - pos);
+						validateAmount(amount, validLine);
+						if (validLine == true)
+						{
+							std::stringstream	ss(amount);
+							ss >> amountF;
+							std::cout << date << " -> " << amountF * exchangeRate << std::endl;
+						}
+						validLine = true;
+					}
+					else
+						std::cout << "Error : Wrong date format : " << date << std::endl;
+				}
 			}
 			else 
 				firstLine = false;
