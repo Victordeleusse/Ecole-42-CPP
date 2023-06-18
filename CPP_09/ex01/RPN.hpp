@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:16:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/16 18:47:20 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/18 14:44:53 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <cmath>
 # include <stack>
 # include <stdio.h>
-# include <string.h>
+# include <string>
+# include <cstring>
+# include <sstream>
+
 
 enum operation {
   ADDITION = 1,
@@ -28,8 +31,7 @@ enum operation {
 
 typedef struct s_data
 {
-	int			a;
-	int			b;
+	char		symbole;
 	operation	ope;
 } t_data;
 
@@ -42,17 +44,32 @@ class RPN
 
 		RPN	&	operator=(const RPN &myRPN);
 
-		std::stack<int>		getNumbers() const;
-		std::stack<char>	getOperations() const;
+		std::stack<int>		getNumbersStack() const;
+		std::stack<t_data>	getOperationsStack() const;
 
-		class IntegerException : public std::exception {
+		bool	isValidNumber(char num);
+		bool	isValidOperator(char ope);
+
+		int		calcul();
+
+		class InputException : public std::exception {
 			public :
-				virtual const char *what() const throw() {return("Please enter an int between 0 ()");};		
+				virtual const char *what() const throw() {return("Error : Please enter an int (0 to 10) or an operator");};		
 		};
 
+		class ArgumentsException : public std::exception {
+			public :
+				virtual const char *what() const throw() {return("Error : Not enough arguments");};		
+		};
+
+		class ValidListException : public std::exception {
+			public :
+				virtual const char *what() const throw() {return("Error : Please enter a valid list of arguments");};		
+		};
+		
 	private :
 		std::stack<int>		numbersStack;
-		std::stack<char>	operationsStack;
+		std::stack<t_data>	operationsStack;
 		
 	
 };
