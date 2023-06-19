@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/19 20:15:32 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:21:30 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ PmergeMe<T, C>::PmergeMe(int argc, char **argv)
 		throw(InputException1());
 	
 	this->isSorted = false;
-	unsigned int	temp;
+	int				temp;
 	int				i = 1;
 	while (i < argc)
 	{
@@ -27,7 +27,9 @@ PmergeMe<T, C>::PmergeMe(int argc, char **argv)
 		ssl >> temp;
 		if (ssl.fail())
 			throw (InputException2());
-		this->container.push_back(temp);
+		else if (temp < 0)
+			throw (InputException2());
+		this->container.push_back(static_cast<unsigned int>(temp));
 		i++;
 	}
 	if (this->container.size() == 1)
