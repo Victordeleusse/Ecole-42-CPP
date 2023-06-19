@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/19 20:03:37 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:15:32 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ PmergeMe<T, C>::PmergeMe(int argc, char **argv)
 		this->alone = this->container.back();
 		this->container.pop_back();
 	}
-	for(int j = 0; j < this->container.size(); j+=2)
-		this->pairsContainer.emplace_back(this->container[j], this->container[j + 1]);
+	for(unsigned long j = 0; j < this->container.size(); j+=2)
+		this->pairsContainer.push_back(std::make_pair(container[j], container[j + 1]));
 	return ;	
 }
 
