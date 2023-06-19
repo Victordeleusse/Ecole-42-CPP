@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:22:36 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/05/30 15:34:08 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/19 11:23:47 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ int	main(void)
 	
 	std::cout << "int : " << s.deserialize(s.serialize(myData))->int_data << std::endl;
 	std::cout << "str : " << s.deserialize(s.serialize(myData))->str_data << std::endl;
+	
+	delete myData;
+	
 	return (0);
 }
