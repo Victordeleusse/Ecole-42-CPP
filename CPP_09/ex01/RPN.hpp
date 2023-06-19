@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:16:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/18 14:44:53 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/18 15:44:13 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 # define RPN_H
 
 # include <iostream>
-# include <cmath>
 # include <stack>
-# include <stdio.h>
-# include <string>
-# include <cstring>
 # include <sstream>
-
 
 enum operation {
   ADDITION = 1,
