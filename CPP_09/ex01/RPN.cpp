@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 18:04:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/18 15:18:39 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:34:57 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ int	RPN::calcul()
 				a *= b;
 				break;
 			case DIVISION :
+				if(b == 0)
+					throw(DivisionBy0Exception());
 				a /= b;
 				break;	
 		}

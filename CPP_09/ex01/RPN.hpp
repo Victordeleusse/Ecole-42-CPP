@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:16:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/18 15:44:13 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 16:34:45 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ class RPN
 		class ValidListException : public std::exception {
 			public :
 				virtual const char *what() const throw() {return("Error : Please enter a valid list of arguments");};		
+		};
+
+		class DivisionBy0Exception : public std::exception {
+			public :
+				virtual const char *what() const throw() {return("Error : Division by 0");};		
 		};
 		
 	private :
