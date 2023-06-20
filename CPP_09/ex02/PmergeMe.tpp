@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 18:36:00 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:40:05 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,12 @@ void	PmergeMe<T, C>::mergeSecondFromPairs()
 template<typename T, template <typename, typename = std::allocator<T> > class C>
 void	PmergeMe<T, C>::sort()
 {
+	if (this->isSorted == true)
+	{
+		this->sortedContainer = this->container;
+		return;
+	}
+	
 	// First and Second step of the Algorithm
 	
 	for(unsigned long j = 0; j < this->container.size(); j+=2)
