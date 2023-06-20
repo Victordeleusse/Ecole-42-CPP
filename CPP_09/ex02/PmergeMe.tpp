@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 18:30:47 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:36:00 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ PmergeMe<T, C>::PmergeMe(const PmergeMe & myP) {
 template<typename T, template <typename, typename = std::allocator<T> > class C>
 PmergeMe<T, C>::~PmergeMe() {
 	return ;
-}
-
-template<typename T, template <typename, typename = std::allocator<T> > class C>
-T	PmergeMe<T, C>::getAlone() const {
-	return (this->alone);
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
@@ -160,7 +155,14 @@ void	PmergeMe<T, C>::mergeSecondFromPairs()
 		while (*it2 < temp)
 			++it2;
 		this->sortedContainer.insert(it2, temp);
-	}	
+	}
+	if (this->alone)
+	{
+		typename C<T>::iterator it3 = this->sortedContainer.begin();
+		while (*it3 < this->alone)
+			++it3;
+		this->sortedContainer.insert(it3, this->alone);
+	}
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
@@ -187,5 +189,4 @@ void	PmergeMe<T, C>::sort()
 	// Fourth and fifth step
 	
 	mergeSecondFromPairs();
-	// mergeAloneElement();
 }

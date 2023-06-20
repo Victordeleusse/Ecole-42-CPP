@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 15:42:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 18:15:01 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:36:02 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class PmergeMe
 		
 		PmergeMe	&	operator=(const PmergeMe & myP);
 
-		T					getAlone() const;
 		C<T>				getContainer() const;
 		C<T>				getSortedContainer() const;
 		C<std::pair<T, T> , std::allocator<T> >	getPairsContainer() const;
@@ -43,7 +42,6 @@ class PmergeMe
 		C<std::pair<T, T> , std::allocator<T> >		mergePairsContainer(C<std::pair<T, T> > leftContainer, C<std::pair<T, T> > rightContainer);
 		void					mergeFirstFromPairs();
 		void					mergeSecondFromPairs();
-		// void					mergeAloneElement();
 
 		class InputException1 : public std::exception {
 			public :
