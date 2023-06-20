@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 16:31:59 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:30:47 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,17 @@ C<T>	PmergeMe<T, C>::getContainer() const {
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
-C<std::pair<T, T> >	PmergeMe<T, C>::getPairsContainer() const {
+C<T>	PmergeMe<T, C>::getSortedContainer() const {
+	return (this->sortedContainer);
+}
+
+template<typename T, template <typename, typename = std::allocator<T> > class C>
+C<std::pair<T, T> , std::allocator<T> >	PmergeMe<T, C>::getPairsContainer() const {
 	return (this->pairsContainer);
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
-C<std::pair<T, T> >	PmergeMe<T, C>::getHalfSortedPairsContainer() const {
+C<std::pair<T, T> , std::allocator<T> >	PmergeMe<T, C>::getHalfSortedPairsContainer() const {
 	return (this->pairsContainer);
 }
 
@@ -94,50 +99,74 @@ PmergeMe<T, C>	&	PmergeMe<T, C>::operator=(const PmergeMe<T, C> & myP)
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
-C<std::pair<T, T> >	&	PmergeMe<T, C>::mergePairsContainer(C<std::pair<T, T> > &leftContainer, C<std::pair<T, T> > &rightContainer)
+C<std::pair<T, T> , std::allocator<T> >	PmergeMe<T, C>::mergePairsContainer(C<std::pair<T, T> > leftContainer, C<std::pair<T, T> > rightContainer)
 {
-	C<std::pair<T, T> >	& newPairContainer;
+	C<std::pair<T, T> , std::allocator<T> >	newPairContainer;
 	
 	while (leftContainer.size() && rightContainer.size())
 	{
 		if(leftContainer[0].first < rightContainer[0].first)
 		{
-			newPairContainer.pushback(leftContainer[0]);
+			newPairContainer.push_back(leftContainer[0]);
 			leftContainer.erase(leftContainer.begin());
 		}
 		else
 		{
-			newPairContainer.pushback(rightContainer[0]);
+			newPairContainer.push_back(rightContainer[0]);
 			rightContainer.erase(rightContainer.begin());
 		}
 	}
 	while (leftContainer.size())
 	{
-		newPairContainer.pushback(leftContainer[0]);
+		newPairContainer.push_back(leftContainer[0]);
 		leftContainer.erase(leftContainer.begin());
 	}
 	while (rightContainer.size())
 	{
-		newPairContainer.pushback(rightContainer[0]);
+		newPairContainer.push_back(rightContainer[0]);
 		rightContainer.erase(rightContainer.begin());
 	}
 	return (newPairContainer);
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
-C<std::pair<T, T> >	&	PmergeMe<T, C>::sortPairsContainer(C<std::pair<T, T> > &myPairsContainer)
+C<std::pair<T, T> , std::allocator<T> >	PmergeMe<T, C>::sortPairsContainer(C<std::pair<T, T> > myPairsContainer)
 {
 	if (myPairsContainer.size() == 1)
 		return (myPairsContainer);
-	C<std::pair<T, T> >	leftContainer = std::copy(myPairsContainer.begin(), myPairsContainer.begin() + myPairsContainer.size()/2, std::inserter(leftContainer));
-	C<std::pair<T, T> >	rightContainer = std::copy(myPairsContainer.begin() + myPairsContainer.size()/2, myPairsContainer.end(), std::inserter(rightContainer));
+	C<std::pair<T, T> , std::allocator<T> >	leftContainer;
+	std::copy(myPairsContainer.begin(), myPairsContainer.begin() + myPairsContainer.size()/2, std::back_inserter(leftContainer));
+	C<std::pair<T, T> , std::allocator<T> >	rightContainer;
+	std::copy(myPairsContainer.begin() + myPairsContainer.size()/2, myPairsContainer.end(), std::back_inserter(rightContainer));
 	return (mergePairsContainer(sortPairsContainer(leftContainer), sortPairsContainer(rightContainer)));
+}
+
+template<typename T, template <typename, typename = std::allocator<T> > class C>
+void	PmergeMe<T, C>::mergeFirstFromPairs()
+{
+	for (typename C<std::pair<T, T> , std::allocator<T> >::iterator it = this->halfSortedPairsContainer.begin() ; it != halfSortedPairsContainer.end(); ++it)
+		this->sortedContainer.push_back((*it).first);
+}
+
+template<typename T, template <typename, typename = std::allocator<T> > class C>
+void	PmergeMe<T, C>::mergeSecondFromPairs()
+{
+	unsigned int	temp;
+	
+	for (typename C<std::pair<T, T> , std::allocator<T> >::iterator it = this->halfSortedPairsContainer.begin() ; it != halfSortedPairsContainer.end(); ++it)
+	{	
+		temp = (*it).second;
+		typename C<T>::iterator it2 = this->sortedContainer.begin();
+		while (*it2 < temp)
+			++it2;
+		this->sortedContainer.insert(it2, temp);
+	}	
 }
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
 void	PmergeMe<T, C>::sort()
 {
-	// First and Second step of the Algorithm 
+	// First and Second step of the Algorithm
 	
 	for(unsigned long j = 0; j < this->container.size(); j+=2)
 	{
@@ -147,8 +176,16 @@ void	PmergeMe<T, C>::sort()
 			this->pairsContainer.push_back(std::make_pair(this->container[j + 1], this->container[j]));
 	}
 
-	// Third step
+	// Third step of the Algorithm
 	
 	this->halfSortedPairsContainer = sortPairsContainer(this->pairsContainer);
 	
+	// Ending the third step
+	
+	mergeFirstFromPairs();
+	
+	// Fourth and fifth step
+	
+	mergeSecondFromPairs();
+	// mergeAloneElement();
 }
