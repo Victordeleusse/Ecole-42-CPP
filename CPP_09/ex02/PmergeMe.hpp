@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 15:42:18 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 18:36:02 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:58:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <utility> 
 # include <algorithm>
 # include <sstream>
+# include <stdio.h>
+# include <sys/time.h>
 
 template<typename T, template <typename, typename = std::allocator<T> > class C>
 class PmergeMe
