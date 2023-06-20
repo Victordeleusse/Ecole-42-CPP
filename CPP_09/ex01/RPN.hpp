@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:16:16 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 16:34:45 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:15:01 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,62 +16,45 @@
 # include <iostream>
 # include <stack>
 # include <sstream>
-
-enum operation {
-  ADDITION = 1,
-  SOUSTRACTION,
-  DIVISION,
-  MULTIPLICATION
-};
-
-typedef struct s_data
-{
-	char		symbole;
-	operation	ope;
-} t_data;
+# include <string>
+# include <stdlib.h> 
 
 class RPN
 {
-	public :
-		RPN(std::string input);
-		RPN(const RPN &myRPN);
-		~RPN();
+	public:
+		RPN(void);
+		RPN(const RPN& obj);
+		virtual ~RPN(void);
 
-		RPN	&	operator=(const RPN &myRPN);
+		RPN&	operator=(const RPN& obj);
 
-		std::stack<int>		getNumbersStack() const;
-		std::stack<t_data>	getOperationsStack() const;
+		void	reversePolishNotation(const std::string &expr);
+		bool	isOperator(char c);
+		void	calculate(int num1, int num2, char op);
 
-		bool	isValidNumber(char num);
-		bool	isValidOperator(char ope);
+		int		getResult(void) const;
 
-		int		calcul();
+		class insufficientOperands : public std::exception {
+			public:
+				virtual const char* what() const throw() { return ("[Error]: insufficient operands"); } };
 
-		class InputException : public std::exception {
-			public :
-				virtual const char *what() const throw() {return("Error : Please enter an int (0 to 10) or an operator");};		
-		};
+		class invalidToken : public std::exception {
+			public:
+				virtual const char* what() const throw() { return ("[Error]: invalid token"); } };
 
-		class ArgumentsException : public std::exception {
-			public :
-				virtual const char *what() const throw() {return("Error : Not enough arguments");};		
-		};
+		class tooManyOperands : public std::exception { 
+			public:
+				virtual const char* what() const throw() { return ("[Error]: too many operands"); } };
 
-		class ValidListException : public std::exception {
-			public :
-				virtual const char *what() const throw() {return("Error : Please enter a valid list of arguments");};		
-		};
-
-		class DivisionBy0Exception : public std::exception {
-			public :
-				virtual const char *what() const throw() {return("Error : Division by 0");};		
-		};
-		
-	private :
-		std::stack<int>		numbersStack;
-		std::stack<t_data>	operationsStack;
-		
+		class divisionByZero : public std::exception {
+			public:
+				virtual const char* what() const throw() { return ("[Error]: division by zero"); } };
 	
+	private:
+		std::stack<int> _stack;
+		int				_result;
 };
+
+std::ostream&	operator<<(std::ostream& o, const RPN& i);
 
 #endif

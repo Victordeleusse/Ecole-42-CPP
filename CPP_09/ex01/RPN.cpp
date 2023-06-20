@@ -6,139 +6,108 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 18:04:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 16:34:57 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:11:23 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(std::string input)
+RPN::RPN(void) : _result(0)
 {
-	if (input.size() < 3)
-		throw(ArgumentsException());
-	
-	std::string::iterator	it = input.end();
-	int						count = 0;
-	
-	it--;
-	while(it!= input.begin())
-	{	
-		if (isspace(*it))
-			;
-		else if (count % 2 == 0)
-		{
-			if (isValidOperator(*it) == false)
-				throw(InputException());
-			count++;
-		}
-		else
-		{
-			if (isValidNumber(*it) == false)
-				throw(InputException());
-			count++;
-		}
-		it--;
+	return ;
+}
+
+RPN::RPN(const RPN& obj)
+{
+	*this = obj;
+	return ;
+}
+
+RPN::~RPN(void)
+{
+	return ;
+}
+
+RPN& RPN::operator=(const RPN& obj)
+{
+	if (this != &obj)
+	{
+		this->_stack = obj._stack;
+		this->_result = obj._result;
 	}
-	if (isValidNumber(*it) == false)
-		throw(InputException());
-	if (this->numbersStack.size() != this->operationsStack.size() + 1)
-		throw(InputException());
-	return ;
-}
-
-RPN::RPN(const RPN &myRPN) {
-	*this = myRPN;
-}
-
-RPN::~RPN() {
-	return ;
-}
-
-std::stack<int>	RPN::getNumbersStack() const {
-	return (this->numbersStack);
-}
-
-std::stack<t_data>	RPN::getOperationsStack() const {
-	return (this->operationsStack);
-}
-
-RPN	&	RPN::operator=(const RPN &myRPN)
-{
-	this->numbersStack = myRPN.getNumbersStack();
-	this->operationsStack = myRPN.getOperationsStack();
 	return (*this);
 }
 
-bool	RPN::isValidNumber(char num)
+void	RPN::reversePolishNotation(const std::string &expr)
 {
-	int			myInt;
-	std::string	myString;
-	
-	myString = num;
-	if (isdigit(num))
+	std::string token;
+
+	for (std::size_t i = 0; i < expr.length(); i++)
 	{
-		std::stringstream	ssl(myString);
-		ssl >> myInt;
-		if (ssl.fail())
-			return(false) ;
-		if (myInt >= 0 && myInt < 10)
+		char c = expr[i];
+		if (c == ' ')
+			continue;
+		else if (isdigit(c))
+			token += c;
+		else if (isOperator(c))
 		{
-			this->numbersStack.push(myInt);
-			return (true);
-		}	
+			if (_stack.size() < 2)
+				throw insufficientOperands();
+			int num2 = _stack.top();
+			_stack.pop();
+			int num1 = _stack.top();
+			_stack.pop();
+			calculate(num1, num2, c);
+		}
+		else
+			throw invalidToken();
+		if (!token.empty())
+		{
+			_stack.push(atoi(token.c_str()));
+			token.clear();
+		}
 	}
+	if (_stack.size() != 1)
+		throw tooManyOperands();
+	_result = _stack.top();
+	_stack.pop();
+}
+
+bool	RPN::isOperator(char c)
+{
+	if (c == '+' || c == '-' || c == '*' || c == '/')
+		return (true);
 	return (false);
 }
 
-bool	RPN::isValidOperator(char ope)
+void	RPN::calculate(int num1, int num2, char op)
 {
-	t_data	data;
-	
-	data.symbole = ope;
-	if (ope == '+')
-	{	
-		data.ope = ADDITION;
+	switch (op)
+	{
+		case '+':
+			_stack.push(num1 + num2);
+			break;
+		case '-':
+			_stack.push(num1 - num2);
+			break;
+		case '*':
+			_stack.push(num1 * num2);
+			break;
+		case '/':
+			if (num2 == 0)
+				throw divisionByZero();
+			_stack.push(num1 / num2);
+			break;
 	}
-	else if (ope == '-')
-		data.ope = SOUSTRACTION;
-	else if (ope == '*')
-		data.ope = MULTIPLICATION;
-	else if (ope == '/')
-		data.ope = DIVISION;
-	else
-		return (false);
-	this->operationsStack.push(data);
-	return (true);
 }
 
-int	RPN::calcul()
+int	RPN::getResult(void) const
 {
-	while(this->numbersStack.size() > 1)
-	{
-		int	&a = this->numbersStack.top();
-		this->numbersStack.pop();
-		int &b = this->numbersStack.top();
-		this->numbersStack.pop();
-		t_data ope = this->operationsStack.top();
-		this->operationsStack.pop();
-		switch (ope.ope)
-		{
-			case ADDITION :
-				a += b;
-				break;
-			case SOUSTRACTION :
-				a -= b;
-				break;
-			case MULTIPLICATION :
-				a *= b;
-				break;
-			case DIVISION :
-				if(b == 0)
-					throw(DivisionBy0Exception());
-				a /= b;
-				break;	
-		}
-		this->numbersStack.push(a);
-	}
-	return (this->numbersStack.top());
+	return (this->_result);
+}
+
+std::ostream&	operator<<(std::ostream& o, const RPN& i)
+{
+	o << i.getResult();
+	return o;
 }
