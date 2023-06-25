@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:30:57 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/20 19:32:47 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:28:15 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		std::cout << "Sorted Vector : ";
 		for (std::vector<unsigned int>::iterator it2 = myvectorSorted.begin() ; it2 != myvectorSorted.end(); ++it2)
     		std::cout << ' ' << *it2;
-		std::cout << "TIME to sort " << argc - 1 << " elements with std::vector as my container : " << elapsed << "seconds." << std::endl;
+		std::cout << "\nTIME to sort " << argc - 1 << " elements with std::vector as my container : " << elapsed << "seconds." << std::endl;
 
   		std::cout << '\n';
   		std::cout << '\n';
