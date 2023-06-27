@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:15:23 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/13 18:17:11 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:04:27 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int main()
     //[...]
     mstack.push(0);
 
+    std::cout << "/ ***** Display MutantStack ***** /" << std::endl;
+
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();
     ++it;
@@ -43,7 +45,19 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
+
     std::stack<int> s(mstack);
+
+    std::cout << "/ ***** Reverse ***** /" << std::endl;
+    
+    
+    MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+    MutantStack<int>::reverse_iterator rite = mstack.rend();
+    while (rit != rite)
+    {
+        std::cout << *rit << std::endl;
+        ++rit;
+    }
 
     /* -------------------------------------------------------------------- */
 

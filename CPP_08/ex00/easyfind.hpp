@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:05:38 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/12 18:23:51 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/27 17:37:54 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <algorithm>
 # include <vector>
 # include <list>
-# include <stack>
 
 class ElementNotFoundException : public std::exception
 {
