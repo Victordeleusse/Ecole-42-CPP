@@ -6,7 +6,7 @@
 /*   By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:15:37 by vde-leus          #+#    #+#             */
-/*   Updated: 2023/06/25 17:18:56 by vde-leus         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:18:09 by vde-leus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,10 +243,12 @@ void	PmergeMe<T, C>::mergeSecondFromPairs()
 				right = end;
 			}
 		}
-		if (temp < this->sortedContainer[left])
+		if (temp < this->sortedContainer[left] || temp == this->sortedContainer[left])
 			it2 = sortedContainer.begin() + left;
-		else 
+		else if (temp > this->sortedContainer[left] && temp < this->sortedContainer[right])
 			it2 = sortedContainer.begin() + left + 1;
+		else
+			it2 = sortedContainer.begin() + right + 1;
 		this->sortedContainer.insert(it2, temp);
 	}
 }
