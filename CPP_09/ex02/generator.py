@@ -6,7 +6,7 @@
 #    By: vde-leus <vde-leus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 15:38:11 by vde-leus          #+#    #+#              #
-#    Updated: 2023/06/28 15:57:11 by vde-leus         ###   ########.fr        #
+#    Updated: 2023/07/07 09:37:42 by vde-leus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,4 +22,4 @@ def	generate(start, end, size) -> list :
 if __name__ == "__main__":
 	liste = generate(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
 	for k in liste :
-		print (k, end=" ")
+		print("{0}".format(k), end=" ")
